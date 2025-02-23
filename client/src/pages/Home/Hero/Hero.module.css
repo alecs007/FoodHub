@@ -122,13 +122,12 @@
 }
 .slider {
   height: 445px;
-  margin: 9vh 0;
+  margin: 7vh 0;
   position: relative;
   width: 100%;
   display: grid;
   place-items: center;
 }
-
 .cards {
   display: flex;
   gap: 2rem;
