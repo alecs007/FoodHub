@@ -1,23 +1,60 @@
 .header {
-  height: 80px;
+  height: 78px;
   width: 100vw;
   position: fixed;
   top: 0;
-  background: #052842;
+  background: var(--color-1);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  z-index: 100;
 }
 .logo {
   color: rgba(255, 255, 255, 0.9);
   height: 100%;
-  padding: 0 20px;
-  font-size: 2.2em;
+  padding: 0 15px;
+  font-size: 2.1em;
   font-weight: 900;
   font-family: sans-serif;
   display: flex;
   align-items: center;
   cursor: pointer;
   .span {
-    color: #e9456c;
+    color: var(--color-2);
   }
+}
+.togglebutton {
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #ffffff;
+  transition: transform 0.3s ease, opacity 0.1s ease;
+}
+.togglebutton.open .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(15px) translateX(1px);
+  margin-left: 13px;
+  width: 35px;
+}
+
+.togglebutton.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.togglebutton.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-15px) translateX(1px);
+  margin-left: 13px;
+  width: 35px;
 }

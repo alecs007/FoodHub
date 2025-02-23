@@ -1,9 +1,10 @@
 import styles from "./Home.module.css";
+import Hero from "./Hero/Hero";
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      <h1>Home</h1>
+      <Hero />
     </div>
   );
 };

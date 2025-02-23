@@ -1,0 +1,47 @@
+.hero {
+  width: 100vw;
+  height: fit-content;
+  min-height: 100vh;
+  padding-top: 80px;
+  background: rgba(5, 40, 66, 0.8);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.3;
+  background: url("../../../assets/hero-background.webp");
+  background-size: cover;
+  background-position: center;
+  filter: blur(6.5px) brightness(0.9) saturate(2.5);
+  z-index: -1;
+}
+.title {
+  margin-top: 9vh;
+  color: white;
+  font-size: clamp(2.6rem, 4.5vw, 6.5rem);
+  font-weight: 900;
+  opacity: 1;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  span {
+    color: var(--color-2);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    margin-top: 6vh;
+    display: block;
+    word-wrap: pre-wrap;
+    word-wrap: break-word;
+    width: 15ch;
+  }
+}
