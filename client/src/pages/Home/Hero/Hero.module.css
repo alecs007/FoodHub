@@ -29,7 +29,7 @@
   margin-top: 9vh;
   margin-bottom: 2vh;
   color: white;
-  font-size: clamp(2.6rem, 4.5vw, 6.5rem);
+  font-size: clamp(2.6rem, 5.5vw, 6.5rem);
   font-weight: 900;
   opacity: 1;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -39,7 +39,7 @@
   }
 }
 .search {
-  width: clamp(350px, 50vw, 1000px);
+  width: clamp(350px, 60vw, 1000px);
   border: none;
   border-bottom: 1px solid var(--color-2);
   background: rgba(255, 255, 255, 0.2);
@@ -55,14 +55,13 @@
 }
 .description {
   margin: 3vh auto;
-  width: clamp(350px, 50vw, 1000px);
+  width: clamp(350px, 60vw, 1000px);
   color: rgba(255, 255, 255, 0.9);
   font-size: clamp(1rem, 1.5vw, 1.5rem);
   font-family: sans-serif;
   font-weight: 500;
   text-align: center;
   opacity: 0.92;
-  letter-spacing: 1px;
   line-height: 1.5;
   .name {
     background: rgba(255, 255, 255, 0.1);
@@ -121,13 +120,33 @@
 .button:active .icon {
   transform: scale(0.95);
 }
-.cards {
-  margin: 10vh 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+.slider {
+  height: 445px;
+  margin: 9vh 0;
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
+
+.cards {
+  display: flex;
+  gap: 2rem;
+  width: calc((330px + 2rem) * 10 + 2rem);
+  animation: scroll 30s linear infinite;
+}
+.cards:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-290px * 5));
+  }
+}
+
 @media screen and (max-width: 600px) {
   .title {
     margin-top: 6vh;

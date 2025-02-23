@@ -34,12 +34,19 @@ const Hero = () => {
           </svg>
         </div>
       </button>
-      <div className={styles.cards}>
-        <FoodCard />
-        <FoodCard />
-        <FoodCard />
-        <FoodCard />
-        <FoodCard />
+      <div className={styles.slider}>
+        <div className={styles.cards}>
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+          <FoodCard />
+        </div>
       </div>
     </section>
   );

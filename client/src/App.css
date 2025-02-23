@@ -12,6 +12,9 @@
   align-items: center;
   justify-content: center;
 }
+body {
+  overflow-x: hidden;
+}
 * {
   margin: 0;
   padding: 0;
