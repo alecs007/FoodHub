@@ -14,8 +14,8 @@ const Hero = () => {
       />
       <div className={styles.description}>
         <span className={styles.name}>FoodHub</span> provides endless cooking
-        recipes for you to try out so that you can become a culinary master! Go
-        ahead and look for your favorite recipes:
+        recipes for you to take your culinary skills to next level! Go ahead and
+        look for your favorite recipes:
       </div>
       <button className={styles.button}>
         Explore recipes

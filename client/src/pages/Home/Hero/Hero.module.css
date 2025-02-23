@@ -58,7 +58,6 @@
   width: clamp(350px, 60vw, 1000px);
   color: rgba(255, 255, 255, 0.9);
   font-size: clamp(1rem, 1.5vw, 1.5rem);
-  font-family: sans-serif;
   font-weight: 500;
   text-align: center;
   opacity: 0.92;
@@ -79,7 +78,6 @@
   padding-left: 0.9em;
   font-size: 19px;
   font-weight: 700;
-  font-family: sans-serif;
   border-radius: 0.9em;
   border: none;
   letter-spacing: 0.05em;

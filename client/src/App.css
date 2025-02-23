@@ -8,6 +8,7 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
   color: rgba(0, 0, 0, 0.8);
+  font-family: sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
