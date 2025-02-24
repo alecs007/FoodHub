@@ -1,18 +1,17 @@
 .post {
   width: 100vw;
   height: fit-content;
-  min-height: 100vh;
   display: grid;
   grid-template-areas:
     "title title"
     "form preview";
-  grid-template-rows: 20% 80%;
   grid-template-columns: 50% 50%;
+  margin-bottom: 50px;
 }
 .title {
   grid-area: title;
   margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-bottom: 7vh;
   color: white;
   font-size: clamp(2.6rem, 5.5vw, 6.5rem);
   font-weight: 900;
@@ -23,11 +22,224 @@
     color: var(--color-2);
   }
 }
+.red {
+  color: var(--color-2);
+}
 .formcontainer {
   grid-area: form;
-  background: red;
+  display: flex;
+  justify-content: right;
 }
 .previewcontainer {
   grid-area: preview;
-  background: blue;
+  display: flex;
+  justify-content: left;
+}
+.form {
+  width: clamp(370px, 40vw, 800px);
+  height: fit-content;
+  padding: 30px 20px;
+  margin-right: 3vw;
+  background: #052842a1;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  border: 1px solid #c3c6ce;
+  box-shadow: 0 0 2px #c3c6ce;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.nameinput {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  input {
+    height: 35px;
+    border: 1px solid black;
+    padding: 0px 10px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+}
+.descriptioninput {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  textarea {
+    height: 265px;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 17px;
+    font-family: sans-serif;
+    font-weight: 600;
+  }
+  textarea:focus {
+    outline: none;
+  }
+}
+.photoinput {
+  .filelabel {
+    cursor: pointer;
+    background: #7a7a7a80;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.685);
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+}
+.categoryinput {
+  height: fit-content;
+  min-height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.categories {
+  min-height: 130px;
+  max-width: 500px;
+  padding: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.category {
+  height: 30px;
+  border-radius: 20px;
+  background: rgb(6, 85, 17);
+  padding: 4px 9px;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  gap: 7px;
+  font-weight: 500;
+}
+.radio {
+  outline: none;
+}
+.usernameinput {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  input {
+    height: 35px;
+    border: 1px solid black;
+    padding: 0px 10px;
+    font-size: 17px;
+    font-weight: 600;
+    width: 50%;
+    min-width: 160px;
+  }
+}
+.preview {
+  width: clamp(370px, 40vw, 800px);
+  height: 807px;
+  padding: 32px 20px;
+  margin-left: 3vw;
+  background: #052842a1;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  border: 1px solid #c3c6ce;
+  box-shadow: 0 0 2px #c3c6ce;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    color: white;
+    font-size: clamp(2.6rem, 3.5vw, 5rem);
+    font-weight: 900;
+    opacity: 1;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+  h3 {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    font-size: 17px;
+  }
+}
+.button {
+  font-size: 18px;
+  letter-spacing: 2px;
+  display: inline-block;
+  text-align: center;
+  font-weight: bolder;
+  padding: 0.7em 3em;
+  border: 3px solid var(--color-2);
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: var(--color-2);
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+.button:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background-color: var(--color-2);
+  z-index: -1;
+}
+.button:hover,
+button:focus {
+  color: white;
+}
+.button:hover:before,
+.button:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+.button:active {
+  transform: scale(0.9);
+}
+
+@media screen and (max-width: 1200px) {
+  .post {
+    grid-template-areas:
+      "title "
+      "form"
+      "preview";
+    grid-template-columns: auto;
+  }
+  .formcontainer {
+    align-items: center;
+    justify-content: center;
+  }
+  .previewcontainer {
+    align-items: center;
+    justify-content: center;
+  }
+  .form {
+    width: clamp(370px, 93vw, 650px);
+    margin: 0 0 50px 0;
+  }
+  .preview {
+    width: clamp(370px, 93vw, 650px);
+    margin: 0;
+  }
+  .usernameinput {
+    h2 {
+      text-wrap: nowrap;
+    }
+    input {
+      width: 100%;
+      min-width: 160px;
+    }
+  }
 }
