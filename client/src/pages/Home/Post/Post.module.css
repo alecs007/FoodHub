@@ -1,0 +1,33 @@
+.post {
+  width: 100vw;
+  height: fit-content;
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "form preview";
+  grid-template-rows: 20% 80%;
+  grid-template-columns: 50% 50%;
+}
+.title {
+  grid-area: title;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  color: white;
+  font-size: clamp(2.6rem, 5.5vw, 6.5rem);
+  font-weight: 900;
+  opacity: 1;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  span {
+    color: var(--color-2);
+  }
+}
+.formcontainer {
+  grid-area: form;
+  background: red;
+}
+.previewcontainer {
+  grid-area: preview;
+  background: blue;
+}
