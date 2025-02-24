@@ -1,6 +1,7 @@
 import styles from "./Post.module.css";
 import { useState } from "react";
 import FoodCard from "../../../components/FoodCard/FoodCard";
+import image from "../../../assets/pizza.jpg";
 
 const Post = () => {
   const categories = [
@@ -92,7 +93,13 @@ const Post = () => {
       <div className={styles.previewcontainer}>
         <div className={styles.preview}>
           <h2>PREVIEW</h2>
-          <FoodCard />
+          <FoodCard
+            src={image}
+            title="pizza"
+            description="description"
+            category="Vegetarian"
+            author="EU"
+          />
           <button className={styles.button}> POST !</button>
           <h3>
             <span className={styles.red}>DISCLAIMER</span> Any information that

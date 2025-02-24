@@ -120,9 +120,6 @@
   gap: 7px;
   font-weight: 500;
 }
-.radio {
-  outline: none;
-}
 .usernameinput {
   display: flex;
   align-items: center;
@@ -153,7 +150,7 @@
   justify-content: space-between;
   h2 {
     color: white;
-    font-size: clamp(2.6rem, 3.5vw, 5rem);
+    font-size: clamp(3.5rem, 7vw, 5.7rem);
     font-weight: 900;
     opacity: 1;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
