@@ -30,7 +30,13 @@ h2 {
   margin: 0;
 }
 ::-webkit-scrollbar {
-  display: none;
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #575757a1;
 }
 input {
   outline: none;

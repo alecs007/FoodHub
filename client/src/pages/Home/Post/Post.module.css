@@ -150,7 +150,7 @@
   justify-content: space-between;
   h2 {
     color: white;
-    font-size: clamp(3.5rem, 7vw, 5.7rem);
+    font-size: clamp(3.5rem, 7vw, 5rem);
     font-weight: 900;
     opacity: 1;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

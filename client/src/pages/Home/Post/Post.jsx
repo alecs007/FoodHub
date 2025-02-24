@@ -95,10 +95,10 @@ const Post = () => {
           <h2>PREVIEW</h2>
           <FoodCard
             src={image}
-            title="pizza"
-            description="description"
+            title="Pizza Diavola"
+            description="Pissa este un termen latin, apărut în secolul IX, care înseamnă „pâine plată”. Începând cu secolul XIV a căpătat sensul de „pâine plată acoperită cu brânză” în limba italiană. Un om care se pricepe la prepararea pizzei se numește pizzaiolo, iar un restaurant care servește pizza se numește „pizzerie” (în italiană pizzeria). De la multe pizzerii se poate comanda și la domiciliu, prin telefon sau internet. Pizza se găsește, de asemenea, în supermarket-uri, sub formă congelată.Pissa este un termen latin, apărut în secolul IX, care înseamnă „pâine plată”. Începând cu secolul XIV a căpătat sensul de „pâine plată acoperită cu brânză” în limba italiană. Un om care se pricepe la prepararea pizzei se numește pizzaiolo, iar un restaurant care servește pizza se numește „pizzerie” (în italiană pizzeria). De la multe pizzerii se poate comanda și la domiciliu, prin telefon sau internet. Pizza se găsește, de asemenea, în supermarket-uri, sub formă congelată."
             category="Vegetarian"
-            author="EU"
+            author="Anonymus"
           />
           <button className={styles.button}> POST !</button>
           <h3>
