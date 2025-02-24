@@ -100,7 +100,11 @@ const Post = () => {
             category="Vegetarian"
             author="Anonymus"
           />
-          <button className={styles.button}> POST !</button>
+          <div className={styles.buttoncontainer}>
+            <button className={styles.button}> POST !</button>
+            <div className={styles.status}></div>
+          </div>
+
           <h3>
             <span className={styles.red}>DISCLAIMER</span> Any information that
             is irrelevant to food domain will not be accepted. Before posting,

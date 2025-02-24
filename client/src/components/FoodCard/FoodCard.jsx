@@ -8,7 +8,11 @@ const FoodCard = ({ src, title, description, category, author }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={styles.foodcard}>
-      <img className={styles.cardimage} src={src} alt="" />
+      <img
+        className={styles.cardimage}
+        src={`http://localhost:8080${src}`}
+        alt={title}
+      />
       <h1 className={styles.cardtitle}>{title}</h1>
       <p className={styles.carddescription}>{description}</p>
       <div className={styles.cardinfo}>

@@ -6,7 +6,11 @@ const Modal = ({ onClose, src, title, description, category, author }) => {
   return ReactDOM.createPortal(
     <div className={styles.modal}>
       <div className={styles.modalcontent}>
-        <img className={styles.modalimage} src={src} alt="" />
+        <img
+          className={styles.modalimage}
+          src={`http://localhost:8080${src}`}
+          alt={title}
+        />
         <h1 className={styles.modaltitle}>{title}</h1>
         <p className={styles.modaldescription}>{description}</p>
         <div className={styles.modalinfo}>

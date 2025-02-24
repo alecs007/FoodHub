@@ -1,18 +1,37 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Layout from "./layout/Layout";
 import Loader from "./components/Loader/Loader";
 
 const Home = lazy(() => import("./pages/Home/Home"));
+const Browse = lazy(() => import("./pages/Browse/Browse"));
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  const fetchRecipes = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/api");
+      setRecipes(res.data);
+    } catch (err) {
+      console.log("Failed to fetch data", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+
   return (
     <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/browse" element={<Browse recipes={recipes} />} />
           </Route>
         </Routes>
       </Suspense>

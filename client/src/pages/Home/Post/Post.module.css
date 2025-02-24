@@ -205,7 +205,19 @@ button:focus {
 .button:active {
   transform: scale(0.9);
 }
-
+.buttoncontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  gap: 10px;
+}
+.status {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
 @media screen and (max-width: 1200px) {
   .post {
     grid-template-areas:
