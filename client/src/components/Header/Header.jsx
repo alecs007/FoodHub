@@ -2,7 +2,7 @@ import styles from "./Header.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Header = ({ setSidebarOpen, sidebarOpen }) => {
+const Header = ({ setSidebarOpen, sidebarOpen, toggleButtonRef }) => {
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -13,6 +13,7 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
       <div
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className={`${styles.togglebutton} ${sidebarOpen ? styles.open : ""}`}
+        ref={toggleButtonRef}
       >
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
@@ -25,6 +26,7 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
 Header.propTypes = {
   setSidebarOpen: PropTypes.func.isRequired,
   sidebarOpen: PropTypes.bool.isRequired,
+  toggleButtonRef: PropTypes.object.isRequired,
 };
 
 export default Header;

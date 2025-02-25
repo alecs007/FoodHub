@@ -1,5 +1,5 @@
 import styles from "./Sidebar.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import arrow_right from "../../assets/arrow-right.png";
@@ -12,6 +12,7 @@ const Sidebar = ({
   setCategoryTerm,
   setSidebarOpen,
   setSearchTerm,
+  toggleButtonRef,
 }) => {
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
@@ -62,8 +63,31 @@ const Sidebar = ({
     if (!sidebarOpen) setToggleMenu(false);
   }, [sidebarOpen]);
 
+  const sidebarRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        !toggleButtonRef.current.contains(event.target)
+      ) {
+        setSidebarOpen(false);
+        setToggleMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
+    <div
+      className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}
+      ref={sidebarRef}
+    >
       <div className={styles.sidebarcontent}>
         <div className={styles.menucontainer}>
           <div
@@ -110,6 +134,7 @@ Sidebar.propTypes = {
   setCategoryTerm: PropTypes.func.isRequired,
   setSidebarOpen: PropTypes.func.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
+  toggleButtonRef: PropTypes.object.isRequired,
 };
 
 export default Sidebar;
