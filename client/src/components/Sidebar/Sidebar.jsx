@@ -1,6 +1,7 @@
 import styles from "./Sidebar.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import arrow_right from "../../assets/arrow-right.png";
 import arrow_down from "../../assets/arrow-down.png";
 import right_arrow from "../../assets/right-arrow.png";
@@ -94,6 +95,13 @@ const Sidebar = ({
       </div>
     </div>
   );
+};
+
+Sidebar.propTypes = {
+  sidebarOpen: PropTypes.bool.isRequired,
+  setCategoryTerm: PropTypes.func.isRequired,
+  setSidebarOpen: PropTypes.func.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

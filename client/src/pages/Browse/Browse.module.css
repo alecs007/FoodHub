@@ -13,3 +13,10 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+.norecipes {
+  font-size: 2em;
+  font-weight: 600;
+  color: #ffffffad;
+  text-align: center;
+  margin-top: 30px;
+}

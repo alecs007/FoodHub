@@ -6,6 +6,9 @@ const Browse = ({ filteredRecipes }) => {
   return (
     <div className={styles.browse}>
       <div className={styles.recipecontainer}>
+        {filteredRecipes.length === 0 && (
+          <h1 className={styles.norecipes}>No recipes found</h1>
+        )}
         {filteredRecipes.map((recipe) => (
           <FoodCard
             key={recipe._id}

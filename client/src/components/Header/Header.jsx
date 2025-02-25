@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const Header = ({ setSidebarOpen, sidebarOpen }) => {
@@ -20,6 +20,11 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  setSidebarOpen: PropTypes.func.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
 };
 
 export default Header;
