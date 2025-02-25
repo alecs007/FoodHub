@@ -251,3 +251,88 @@ button:focus {
     }
   }
 }
+
+.foodcard {
+  width: 330px;
+  height: 400px;
+  background-color: #052842ad;
+  border-radius: 15px;
+  border: 2px solid #c3c6ce;
+  position: relative;
+  transition: 0.5s ease-out;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+.cardbutton {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #e9456c;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.8rem 1.5rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 17px;
+    margin-left: 10px;
+    filter: invert(1);
+  }
+}
+.cardimage {
+  width: 100%;
+  height: 50%;
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+}
+.cardtitle {
+  height: 55px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 5px 0.7rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.carddescription {
+  margin: 0 0.7rem;
+  height: 90px;
+  overflow: hidden;
+  color: #c3c6ce;
+  font-size: 1rem;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.cardinfo {
+  padding: 0 10px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardcategory {
+  border-radius: 20px;
+  padding: 4px 7px;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.cardauthor {
+  color: #c3c6cea4;
+  font-size: 0.8rem;
+}

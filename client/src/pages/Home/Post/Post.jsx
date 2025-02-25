@@ -2,6 +2,7 @@ import styles from "./Post.module.css";
 import { useState } from "react";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import axios from "axios";
+import no_image from "../../../assets/no_image.jpg";
 
 const Post = () => {
   const [title, setTitle] = useState("");
@@ -80,6 +81,7 @@ const Post = () => {
       setImageFile(null);
       setCategory("");
       setAuthor("");
+      setFileName("No photo chosen");
       document.querySelector('input[type="file"]').value = "";
       alert("Post submited");
     } catch (err) {
@@ -168,13 +170,30 @@ const Post = () => {
       <div className={styles.previewcontainer}>
         <div className={styles.preview}>
           <h2>PREVIEW</h2>
-          <FoodCard
-            src={imageFile ? URL.createObjectURL(imageFile) : ""}
-            title={title}
-            description={description}
-            category={category}
-            author={author}
-          />
+
+          <div className={styles.foodcard}>
+            <img
+              className={styles.cardimage}
+              src={imageFile ? URL.createObjectURL(imageFile) : no_image}
+              alt={title}
+            />
+            <h1 className={styles.cardtitle}>{title}</h1>
+            <p className={styles.carddescription}>{description}</p>
+            <div className={styles.cardinfo}>
+              {category && (
+                <div
+                  className={styles.cardcategory}
+                  style={{
+                    backgroundColor: categories.find((c) => c.name === category)
+                      .color,
+                  }}
+                >
+                  {category}
+                </div>
+              )}
+              {author && <div className={styles.cardauthor}>By: {author}</div>}
+            </div>
+          </div>
           <div className={styles.buttoncontainer}>
             <button className={styles.button} onClick={() => handleSubmit()}>
               POST !
