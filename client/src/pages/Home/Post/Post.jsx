@@ -1,9 +1,16 @@
 import styles from "./Post.module.css";
 import { useState } from "react";
 import FoodCard from "../../../components/FoodCard/FoodCard";
-import image from "../../../assets/pizza.jpg";
+import axios from "axios";
 
 const Post = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageFile, setImageFile] = useState(null);
+  const [category, setCategory] = useState("");
+  const [author, setAuthor] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -16,17 +23,70 @@ const Post = () => {
     { name: "Kids' favourites", color: "#FFA500" },
     { name: "Quick meal", color: "#0077B6" },
   ];
-  const [selectedCategory, setSelectedCategory] = useState("");
+
   const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
+    setCategory(category);
   };
 
   const [fileName, setFileName] = useState("No photo chosen");
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "No photo chosen");
+    console.log(file);
+    setImageFile(file);
   };
 
+  const handleSubmit = async () => {
+    try {
+      if (title.length <= 0) {
+        setErrorMessage("Food name is required");
+        return;
+      }
+      if (description.length <= 0) {
+        setErrorMessage("Food description is required");
+        return;
+      }
+      if (!imageFile) {
+        setErrorMessage("Food image is required");
+        return;
+      }
+      if (imageFile.size > 1000 * 1024 * 1024) {
+        setErrorMessage("Image size should be less than 1000MB");
+        return;
+      }
+      if (category.length <= 0) {
+        setErrorMessage("Food category is required");
+        return;
+      }
+      if (author.length <= 0) {
+        setAuthor("Anonymous");
+      }
+      setErrorMessage("");
+
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("image", imageFile);
+      formData.append("category", category);
+      formData.append("author", author || "Anonymous");
+
+      const res = await axios.post("http://localhost:8080/api", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setTitle("");
+      setDescription("");
+      setImageFile(null);
+      setCategory("");
+      setAuthor("");
+      document.querySelector('input[type="file"]').value = "";
+      alert("Post submited");
+    } catch (err) {
+      console.log("Failed to submit  post", err);
+      setErrorMessage("Failed to submit post");
+    }
+  };
   return (
     <section className={styles.post}>
       <div className={styles.title}>
@@ -38,17 +98,27 @@ const Post = () => {
             <h2>
               Food name <span className={styles.red}>*</span>
             </h2>
-            <input type="text" placeholder="Enter food name" />
+            <input
+              type="text"
+              placeholder="Enter food name"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className={styles.descriptioninput}>
             <h2>
               Description <span className={styles.red}>*</span>
             </h2>
-            <textarea placeholder="Enter food description (ingredients, preparation, nutriments etc)" />
+            <textarea
+              placeholder="Enter food description (ingredients, preparation, nutriments etc)"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
           <div className={styles.photoinput}>
             <input
               type="file"
+              accept="image/*"
               id="fileInput"
               hidden
               onChange={handleFileChange}
@@ -75,7 +145,7 @@ const Post = () => {
                     type="radio"
                     name="category"
                     value={name}
-                    checked={selectedCategory === name}
+                    checked={category === name}
                     onChange={() => handleCategoryChange(name)}
                     className={styles.radio}
                   />
@@ -86,7 +156,12 @@ const Post = () => {
           </div>
           <div className={styles.usernameinput}>
             <h2>Your name</h2>
-            <input type="text" placeholder="Anonymus" />
+            <input
+              type="text"
+              placeholder="Anonymus"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+            />
           </div>
         </div>
       </div>
@@ -94,15 +169,17 @@ const Post = () => {
         <div className={styles.preview}>
           <h2>PREVIEW</h2>
           <FoodCard
-            src={image}
-            title="Pizza Diavola"
-            description="Pissa este un termen latin, apărut în secolul IX, care înseamnă „pâine plată”. Începând cu secolul XIV a căpătat sensul de „pâine plată acoperită cu brânză” în limba italiană. Un om care se pricepe la prepararea pizzei se numește pizzaiolo, iar un restaurant care servește pizza se numește „pizzerie” (în italiană pizzeria). De la multe pizzerii se poate comanda și la domiciliu, prin telefon sau internet. Pizza se găsește, de asemenea, în supermarket-uri, sub formă congelată.Pissa este un termen latin, apărut în secolul IX, care înseamnă „pâine plată”. Începând cu secolul XIV a căpătat sensul de „pâine plată acoperită cu brânză” în limba italiană. Un om care se pricepe la prepararea pizzei se numește pizzaiolo, iar un restaurant care servește pizza se numește „pizzerie” (în italiană pizzeria). De la multe pizzerii se poate comanda și la domiciliu, prin telefon sau internet. Pizza se găsește, de asemenea, în supermarket-uri, sub formă congelată."
-            category="Vegetarian"
-            author="Anonymus"
+            src={imageFile ? URL.createObjectURL(imageFile) : ""}
+            title={title}
+            description={description}
+            category={category}
+            author={author}
           />
           <div className={styles.buttoncontainer}>
-            <button className={styles.button}> POST !</button>
-            <div className={styles.status}></div>
+            <button className={styles.button} onClick={() => handleSubmit()}>
+              POST !
+            </button>
+            <div className={styles.status}>{errorMessage}</div>
           </div>
 
           <h3>

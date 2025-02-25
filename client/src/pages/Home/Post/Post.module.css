@@ -210,7 +210,6 @@ button:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-style: italic;
   gap: 10px;
 }
 .status {
