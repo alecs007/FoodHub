@@ -5,7 +5,12 @@ import arrow_right from "../../assets/arrow-right.png";
 import arrow_down from "../../assets/arrow-down.png";
 import right_arrow from "../../assets/right-arrow.png";
 
-const Sidebar = ({ sidebarOpen, setCategoryTerm }) => {
+const Sidebar = ({
+  sidebarOpen,
+  setCategoryTerm,
+  setSidebarOpen,
+  setSearchTerm,
+}) => {
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -23,6 +28,7 @@ const Sidebar = ({ sidebarOpen, setCategoryTerm }) => {
   const navigate = useNavigate();
 
   const handlePostClick = () => {
+    setSidebarOpen(false);
     navigate("/");
     setTimeout(() => {
       const section = document.getElementById("post");
@@ -33,6 +39,7 @@ const Sidebar = ({ sidebarOpen, setCategoryTerm }) => {
   };
 
   const handleHomeClick = () => {
+    setSidebarOpen(false);
     navigate("/");
     setTimeout(() => {
       const section = document.getElementById("hero");
@@ -43,8 +50,10 @@ const Sidebar = ({ sidebarOpen, setCategoryTerm }) => {
   };
 
   const handleCategoryClick = (category) => {
+    setSidebarOpen(false);
     setCategoryTerm(category);
     navigate("/browse");
+    setSearchTerm("");
   };
 
   return (

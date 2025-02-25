@@ -36,7 +36,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (searchTerm.trim() === "") {
+    if (searchTerm.trim() === "" && categoryTerm.trim() === "") {
       setFilteredRecipes(recipes);
     } else {
       setFilteredRecipes(
@@ -48,7 +48,7 @@ function App() {
   }, [searchTerm, recipes]);
 
   useEffect(() => {
-    if (categoryTerm.trim() === "") {
+    if (categoryTerm.trim() === "" && searchTerm.trim() === "") {
       setFilteredRecipes(recipes);
     } else {
       setFilteredRecipes(
@@ -67,7 +67,14 @@ function App() {
     <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route element={<Layout setCategoryTerm={setCategoryTerm} />}>
+          <Route
+            element={
+              <Layout
+                setCategoryTerm={setCategoryTerm}
+                setSearchTerm={setSearchTerm}
+              />
+            }
+          >
             <Route
               path="/"
               element={
@@ -75,6 +82,7 @@ function App() {
                   randomRecipes={randomRecipes}
                   searchTerm={searchTerm}
                   setSearchTerm={setSearchTerm}
+                  setCategoryTerm={setCategoryTerm}
                 />
               }
             />

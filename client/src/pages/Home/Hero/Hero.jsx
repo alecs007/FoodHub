@@ -2,7 +2,12 @@ import styles from "./Hero.module.css";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import { Link, useNavigate } from "react-router-dom";
 
-const Hero = ({ randomRecipes, searchTerm, setSearchTerm }) => {
+const Hero = ({
+  randomRecipes,
+  searchTerm,
+  setSearchTerm,
+  setCategoryTerm,
+}) => {
   const navigate = useNavigate();
 
   const handleKeyDown = (e) => {
@@ -33,6 +38,7 @@ const Hero = ({ randomRecipes, searchTerm, setSearchTerm }) => {
           className={styles.button}
           onClick={() => {
             setSearchTerm("");
+            setCategoryTerm("");
           }}
         >
           Explore recipes
