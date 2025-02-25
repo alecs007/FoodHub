@@ -65,16 +65,29 @@ const postSchema = new mongoose.Schema({
   imageUrl: { type: String, required: true },
   category: { type: String, required: true },
   author: { type: String, required: true },
+  status: { type: String, enum: ["pending", "approved"], default: "pending" },
 });
 
 const Post = mongoose.model("Post", postSchema);
 
-app.get("/api", async (req, res) => {
+app.get("/api/approved", async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find({ status: "approved" });
     res.status(200).json(posts);
   } catch (err) {
     console.log("Failed to fetch posts", err);
+    res.status(500).json({ error: "❌ Internal server error" });
+  }
+});
+
+app.get("/api/pending", async (req, res) => {
+  try {
+    console.log("🔍 Fetching pending recipes..."); // Debugging
+    const pendingPosts = await Post.find({ status: "pending" });
+    console.log("✅ Found pending posts:", pendingPosts); // Debuggin
+    res.status(200).json(pendingPosts);
+  } catch (err) {
+    console.error("Failed to fetch pending posts", err);
     res.status(500).json({ error: "❌ Internal server error" });
   }
 });
@@ -92,6 +105,7 @@ app.post("/api", upload.single("image"), async (req, res) => {
       imageUrl: `/uploads/${req.file.filename}`,
       category,
       author,
+      status: "pending",
     });
 
     await newPost.save();
@@ -123,6 +137,27 @@ app.delete("/api/:id", async (req, res) => {
       .json({ message: "✅ Post deleted successfully", deletedPost });
   } catch (err) {
     res.status(400).json({ error: "❌ Failed to delete post" });
+  }
+});
+
+app.patch("/api/:id/approve", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedPost = await Post.findByIdAndUpdate(
+      id,
+      { status: "approved" },
+      { new: true }
+    );
+
+    if (!updatedPost) {
+      return res.status(404).json({ error: "❌ Post not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "✅ Post approved successfully", updatedPost });
+  } catch (err) {
+    res.status(500).json({ error: "❌ Failed to update post status" });
   }
 });
 

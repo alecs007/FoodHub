@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "./layout/Layout";
 import Loader from "./components/Loader/Loader";
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Browse = lazy(() => import("./pages/Browse/Browse"));
@@ -14,7 +15,7 @@ function App() {
 
   const fetchRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api");
+      const res = await axios.get("http://localhost:8080/api/approved");
       setRecipes(res.data);
     } catch (err) {
       console.log("Failed to fetch data", err);
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/browse" element={<Browse recipes={recipes} />} />
           </Route>
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </Suspense>
     </Router>

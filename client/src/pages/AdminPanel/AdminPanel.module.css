@@ -1,0 +1,69 @@
+.adminpanel {
+  width: 100vw;
+  min-height: 100vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #052842ad;
+  color: #fff;
+  overflow: hidden;
+}
+.adminsearch {
+  height: 150px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  input {
+    width: clamp(250px, 40vw, 500px);
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 18px;
+  }
+}
+.adminrecipes {
+  width: 100vw;
+  height: fit-content;
+  padding: 30px;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.adminrecipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  .adminbutton {
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    font-style: italic;
+  }
+}
+.buttoncontainer {
+  display: flex;
+  gap: 10px;
+}
+.categorybutton {
+  cursor: pointer;
+  color: #fff;
+  background-color: rgb(142, 151, 195);
+  padding: 7px 10px;
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+}
