@@ -39,6 +39,14 @@ const Post = () => {
 
   const handleSubmit = async () => {
     try {
+      if (title.length > 30) {
+        setErrorMessage("Food name should be less than 25 characters");
+        return;
+      }
+      if (author.length > 25) {
+        setErrorMessage("Author name should be less than 25 characters");
+        return;
+      }
       if (title.length <= 0) {
         setErrorMessage("Food name is required");
         return;

@@ -1,6 +1,7 @@
 import styles from "./Hero.module.css";
-import FoodCard from "../../../components/FoodCard/FoodCard";
 import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import FoodCard from "../../../components/FoodCard/FoodCard";
 
 const Hero = ({
   randomRecipes,
@@ -88,4 +89,10 @@ const Hero = ({
   );
 };
 
+Hero.propTypes = {
+  randomRecipes: PropTypes.array,
+  searchTerm: PropTypes.string,
+  setSearchTerm: PropTypes.func,
+  setCategoryTerm: PropTypes.func,
+};
 export default Hero;
