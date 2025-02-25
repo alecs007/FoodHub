@@ -11,7 +11,7 @@ const Hero = ({ randomRecipes, searchTerm, setSearchTerm }) => {
     }
   };
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id="hero">
       <div className={styles.title}>
         DISCOVER<span>.</span>COOK<span>.</span>ENJOY<span>!</span>
       </div>

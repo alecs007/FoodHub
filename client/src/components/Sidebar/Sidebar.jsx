@@ -1,5 +1,6 @@
 import styles from "./Sidebar.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import arrow_right from "../../assets/arrow-right.png";
 import arrow_down from "../../assets/arrow-down.png";
 import right_arrow from "../../assets/right-arrow.png";
@@ -18,17 +19,39 @@ const Sidebar = ({ sidebarOpen }) => {
     { name: "Quick meal", color: "#0077B6" },
   ];
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handlePostClick = () => {
+    navigate("/");
+    setTimeout(() => {
+      const section = document.getElementById("post");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
+  const handleHomeClick = () => {
+    navigate("/");
+    setTimeout(() => {
+      const section = document.getElementById("hero");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   return (
     <div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
       <div className={styles.sidebarcontent}>
         <div className={styles.menucontainer}>
-          <div className={`${styles.menu} ${toggleMenu ? styles.open : ""}`}>
+          <div
+            className={`${styles.menu} ${toggleMenu ? styles.open : ""}`}
+            onClick={() => setToggleMenu((prev) => !prev)}
+          >
             <h2>Category</h2>
-            <img
-              src={toggleMenu ? arrow_down : arrow_right}
-              alt="arrow"
-              onClick={() => setToggleMenu((prev) => !prev)}
-            />
+            <img src={toggleMenu ? arrow_down : arrow_right} alt="arrow" />
           </div>
           {toggleMenu && (
             <div className={styles.submenu}>
@@ -45,11 +68,11 @@ const Sidebar = ({ sidebarOpen }) => {
           )}
         </div>
 
-        <div className={styles.menu}>
+        <div className={styles.menu} onClick={handleHomeClick}>
           <h2>Home</h2>
           <img src={right_arrow} alt="arrow" />
         </div>
-        <div className={styles.menu}>
+        <div className={styles.menu} onClick={handlePostClick}>
           <h2>Post recipe</h2>
           <img src={right_arrow} alt="arrow" />
         </div>
