@@ -41,14 +41,14 @@
   font-weight: 600;
   text-align: center;
   font-family: sans-serif;
-  height: 270px;
+  height: 250px;
   overflow: auto;
   padding: 0 20px;
   text-align: justify;
   text-justify: inter-word;
 }
 .modalinfo {
-  height: 70px;
+  height: 85px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,7 +56,7 @@
 }
 .modalcategory {
   height: 30px;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgb(6, 85, 17);
   padding: 4px 9px;
   color: #fff;

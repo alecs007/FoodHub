@@ -2,11 +2,11 @@ import styles from "./Browse.module.css";
 import PropTypes from "prop-types";
 import FoodCard from "../../components/FoodCard/FoodCard";
 
-const Browse = ({ recipes }) => {
+const Browse = ({ filteredRecipes }) => {
   return (
     <div className={styles.browse}>
       <div className={styles.recipecontainer}>
-        {recipes.map((recipe) => (
+        {filteredRecipes.map((recipe) => (
           <FoodCard
             key={recipe._id}
             src={recipe.imageUrl}

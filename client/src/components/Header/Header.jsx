@@ -2,8 +2,7 @@ import styles from "./Header.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
-  const [open, setOpen] = useState(false);
+const Header = ({ setSidebarOpen, sidebarOpen }) => {
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -12,8 +11,8 @@ const Header = () => {
         </div>
       </Link>
       <div
-        onClick={() => setOpen(!open)}
-        className={`${styles.togglebutton} ${open ? styles.open : ""}`}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className={`${styles.togglebutton} ${sidebarOpen ? styles.open : ""}`}
       >
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>

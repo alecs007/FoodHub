@@ -1,6 +1,7 @@
 .header {
   height: 78px;
-  width: 100vw;
+  width: calc(100vw - 7px);
+  margin-right: 7px;
   position: fixed;
   top: 0;
   background: var(--color-1);

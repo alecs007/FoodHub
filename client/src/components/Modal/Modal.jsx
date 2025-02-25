@@ -3,6 +3,18 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 
 const Modal = ({ onClose, src, title, description, category, author }) => {
+  const categories = [
+    { name: "Breakfast", color: "#FFC300" },
+    { name: "Lunch", color: "#E63946" },
+    { name: "Dinner", color: "#6A5ACD" },
+    { name: "Dessert", color: "#ffb4a2" },
+    { name: "Vegetarian", color: "#065511" },
+    { name: "High Protein", color: "#B22222" },
+    { name: "Gluten-free", color: "#90BE6D" },
+    { name: "Low carb", color: "#A67C52" },
+    { name: "Kids' favourites", color: "#FFA500" },
+    { name: "Quick meal", color: "#0077B6" },
+  ];
   return ReactDOM.createPortal(
     <div className={styles.modal}>
       <div className={styles.modalcontent}>
@@ -14,7 +26,15 @@ const Modal = ({ onClose, src, title, description, category, author }) => {
         <h1 className={styles.modaltitle}>{title}</h1>
         <p className={styles.modaldescription}>{description}</p>
         <div className={styles.modalinfo}>
-          <div className={styles.modalcategory}>{category}</div>
+          <div
+            className={styles.modalcategory}
+            style={{
+              backgroundColor: categories.find((c) => c.name === category)
+                .color,
+            }}
+          >
+            {category}
+          </div>
           <div className={styles.modalauthor}>By: {author}</div>
           <button className={styles.modalbutton} onClick={onClose}>
             Close

@@ -1,8 +1,15 @@
 import styles from "./Hero.module.css";
 import FoodCard from "../../../components/FoodCard/FoodCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Hero = ({ randomRecipes }) => {
+const Hero = ({ randomRecipes, searchTerm, setSearchTerm }) => {
+  const navigate = useNavigate();
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      navigate("/browse");
+    }
+  };
   return (
     <section className={styles.hero}>
       <div className={styles.title}>
@@ -11,6 +18,9 @@ const Hero = ({ randomRecipes }) => {
       <input
         className={styles.search}
         type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Search for food recipes..."
       />
       <div className={styles.description}>
@@ -19,7 +29,12 @@ const Hero = ({ randomRecipes }) => {
         look for your favorite recipes:
       </div>
       <Link to="/browse">
-        <button className={styles.button}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            setSearchTerm("");
+          }}
+        >
           Explore recipes
           <div className={styles.icon}>
             <svg

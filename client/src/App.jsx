@@ -13,6 +13,8 @@ const Browse = lazy(() => import("./pages/Browse/Browse"));
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [randomRecipes, setRandomRecipes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
   const getRandomRecipes = (allRecipes) => {
     if (allRecipes.length <= 10) return allRecipes;
@@ -33,6 +35,18 @@ function App() {
   };
 
   useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredRecipes(recipes);
+    } else {
+      setFilteredRecipes(
+        recipes.filter((recipe) =>
+          recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    }
+  }, [searchTerm, recipes]);
+
+  useEffect(() => {
     fetchRecipes();
   }, []);
 
@@ -41,8 +55,20 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home randomRecipes={randomRecipes} />} />
-            <Route path="/browse" element={<Browse recipes={recipes} />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  randomRecipes={randomRecipes}
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+                />
+              }
+            />
+            <Route
+              path="/browse"
+              element={<Browse filteredRecipes={filteredRecipes} />}
+            />
           </Route>
           <Route path="/admin" element={<AdminPanel />} />
         </Routes>
