@@ -16,16 +16,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
-  input {
-    width: clamp(250px, 40vw, 500px);
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    padding: 0 10px;
-    font-size: 18px;
-  }
 }
 .adminrecipes {
   width: 100vw;

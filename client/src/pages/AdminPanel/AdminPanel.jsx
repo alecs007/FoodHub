@@ -56,19 +56,18 @@ const AdminPanel = () => {
     <div className={styles.adminpanel}>
       {isOpen && <AdminModal onClose={() => setIsOpen(false)} />}
       <div className={styles.adminsearch}>
-        <input type="text" placeholder="Search for recipes..." />
         <div className={styles.buttoncontainer}>
-          <button
-            className={styles.categorybutton}
-            onClick={() => setShowPending(true)}
-          >
-            Pending recipes
-          </button>
           <button
             className={styles.categorybutton}
             onClick={() => setShowPending(false)}
           >
             Approved recipes
+          </button>
+          <button
+            className={styles.categorybutton}
+            onClick={() => setShowPending(true)}
+          >
+            Pending recipes
           </button>
         </div>
       </div>

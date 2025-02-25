@@ -90,7 +90,7 @@ const Post = () => {
     }
   };
   return (
-    <section className={styles.post} id="post">
+    <section className={styles.post}>
       <div className={styles.title}>
         POST YOUR BEST RECIPES<span>!</span>
       </div>
