@@ -43,6 +43,9 @@
     font-style: italic;
   }
 }
+.categorybutton.active {
+  border: 1px solid #fff;
+}
 .buttoncontainer {
   display: flex;
   gap: 10px;

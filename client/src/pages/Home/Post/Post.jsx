@@ -1,6 +1,5 @@
 import styles from "./Post.module.css";
 import { useState } from "react";
-import FoodCard from "../../../components/FoodCard/FoodCard";
 import axios from "axios";
 import no_image from "../../../assets/no_image.jpg";
 
@@ -91,10 +90,17 @@ const Post = () => {
       setAuthor("");
       setFileName("No photo chosen");
       document.querySelector('input[type="file"]').value = "";
-      alert("Post submited");
+      alert(
+        "✅ Your recipe has been submitted successfully! It will be reviewed by an admin before being published."
+      );
     } catch (err) {
-      console.log("Failed to submit  post", err);
-      setErrorMessage("Failed to submit post");
+      console.log(
+        " There was an error submitting your recipe. Please try again.",
+        err
+      );
+      setErrorMessage(
+        "❌ There was an error submitting your recipe. Please try again."
+      );
     }
   };
   return (

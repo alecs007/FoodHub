@@ -58,13 +58,17 @@ const AdminPanel = () => {
       <div className={styles.adminsearch}>
         <div className={styles.buttoncontainer}>
           <button
-            className={styles.categorybutton}
+            className={`${styles.categorybutton} ${
+              !showPending ? styles.active : ""
+            }`}
             onClick={() => setShowPending(false)}
           >
             Approved recipes
           </button>
           <button
-            className={styles.categorybutton}
+            className={`${styles.categorybutton} ${
+              showPending ? styles.active : ""
+            }`}
             onClick={() => setShowPending(true)}
           >
             Pending recipes

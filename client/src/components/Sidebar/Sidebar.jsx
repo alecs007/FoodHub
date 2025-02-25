@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import arrow_right from "../../assets/arrow-right.png";
 import arrow_down from "../../assets/arrow-down.png";
 import right_arrow from "../../assets/right-arrow.png";
+import saved from "../../assets/saved.png";
 
 const Sidebar = ({
   sidebarOpen,
@@ -87,7 +88,10 @@ const Sidebar = ({
             </div>
           )}
         </div>
-
+        <div className={styles.menu}>
+          <h2>Favorites</h2>
+          <img src={saved} alt="save" />
+        </div>
         <div className={styles.menu} onClick={handleHomeClick}>
           <h2>Home</h2>
           <img src={right_arrow} alt="arrow" />
