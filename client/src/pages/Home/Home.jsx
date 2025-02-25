@@ -2,10 +2,10 @@ import styles from "./Home.module.css";
 import Hero from "./Hero/Hero";
 import Post from "./Post/Post";
 
-const Home = () => {
+const Home = ({ randomRecipes }) => {
   return (
     <div className={styles.home}>
-      <Hero />
+      <Hero randomRecipes={randomRecipes} />
       <Post />
     </div>
   );

@@ -4,6 +4,7 @@
   min-height: 100vh;
   padding-top: 78px;
   background: #052842b7;
+  overflow: hidden;
 }
 .recipecontainer {
   padding: 30px;

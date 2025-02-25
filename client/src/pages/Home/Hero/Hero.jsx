@@ -2,7 +2,7 @@ import styles from "./Hero.module.css";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import { Link } from "react-router-dom";
 
-const Hero = () => {
+const Hero = ({ randomRecipes }) => {
   return (
     <section className={styles.hero}>
       <div className={styles.title}>
@@ -39,16 +39,28 @@ const Hero = () => {
       </Link>
       <div className={styles.slider}>
         <div className={styles.cards}>
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
+          {randomRecipes &&
+            randomRecipes.map((recipe) => (
+              <FoodCard
+                key={recipe._id}
+                src={recipe.imageUrl}
+                title={recipe.title}
+                description={recipe.description}
+                category={recipe.category}
+                author={recipe.author}
+              />
+            ))}
+          {randomRecipes &&
+            randomRecipes.map((recipe) => (
+              <FoodCard
+                key={recipe._id}
+                src={recipe.imageUrl}
+                title={recipe.title}
+                description={recipe.description}
+                category={recipe.category}
+                author={recipe.author}
+              />
+            ))}
         </div>
       </div>
     </section>
