@@ -2,6 +2,7 @@ import styles from "./Hero.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import FoodCard from "../../../components/FoodCard/FoodCard";
+import search from "../../../assets/search.png";
 
 const Hero = ({
   randomRecipes,
@@ -21,14 +22,19 @@ const Hero = ({
       <div className={styles.title}>
         DISCOVER<span>.</span>COOK<span>.</span>ENJOY<span>!</span>
       </div>
-      <input
-        className={styles.search}
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Search for food recipes..."
-      />
+      <div className={styles.inputcontainer}>
+        <input
+          className={styles.search}
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Search for food recipes..."
+        />
+        <div className={styles.searchicon} onClick={() => navigate("/browse")}>
+          <img src={search} alt="search" />
+        </div>
+      </div>
       <div className={styles.description}>
         <span className={styles.name}>FoodHub</span> provides endless cooking
         recipes for you to take your culinary skills to next level! Go ahead and
