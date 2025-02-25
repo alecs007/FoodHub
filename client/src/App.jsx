@@ -15,6 +15,7 @@ function App() {
   const [randomRecipes, setRandomRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [categoryTerm, setCategoryTerm] = useState("");
 
   const getRandomRecipes = (allRecipes) => {
     if (allRecipes.length <= 10) return allRecipes;
@@ -47,6 +48,18 @@ function App() {
   }, [searchTerm, recipes]);
 
   useEffect(() => {
+    if (categoryTerm.trim() === "") {
+      setFilteredRecipes(recipes);
+    } else {
+      setFilteredRecipes(
+        recipes.filter((recipe) =>
+          recipe.category.toLowerCase().includes(categoryTerm.toLowerCase())
+        )
+      );
+    }
+  }, [categoryTerm, recipes]);
+
+  useEffect(() => {
     fetchRecipes();
   }, []);
 
@@ -54,7 +67,7 @@ function App() {
     <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route element={<Layout />}>
+          <Route element={<Layout setCategoryTerm={setCategoryTerm} />}>
             <Route
               path="/"
               element={

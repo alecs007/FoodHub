@@ -6,7 +6,7 @@ import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Loader from "../components/Loader/Loader";
 
-const Layout = () => {
+const Layout = ({ setCategoryTerm }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className={styles.layout}>
@@ -14,7 +14,7 @@ const Layout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-      <Sidebar sidebarOpen={sidebarOpen} />
+      <Sidebar sidebarOpen={sidebarOpen} setCategoryTerm={setCategoryTerm} />
     </div>
   );
 };

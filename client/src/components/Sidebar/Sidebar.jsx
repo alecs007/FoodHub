@@ -5,7 +5,7 @@ import arrow_right from "../../assets/arrow-right.png";
 import arrow_down from "../../assets/arrow-down.png";
 import right_arrow from "../../assets/right-arrow.png";
 
-const Sidebar = ({ sidebarOpen }) => {
+const Sidebar = ({ sidebarOpen, setCategoryTerm }) => {
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -42,6 +42,11 @@ const Sidebar = ({ sidebarOpen }) => {
     }, 100);
   };
 
+  const handleCategoryClick = (category) => {
+    setCategoryTerm(category);
+    navigate("/browse");
+  };
+
   return (
     <div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
       <div className={styles.sidebarcontent}>
@@ -60,6 +65,7 @@ const Sidebar = ({ sidebarOpen }) => {
                   key={category.name}
                   className={styles.category}
                   style={{ backgroundColor: category.color }}
+                  onClick={() => handleCategoryClick(category.name)}
                 >
                   {category.name}
                 </div>
