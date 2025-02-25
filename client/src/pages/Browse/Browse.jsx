@@ -22,6 +22,6 @@ const Browse = ({ filteredRecipes }) => {
 };
 
 Browse.propTypes = {
-  recipes: PropTypes.array,
+  filteredRecipes: PropTypes.array,
 };
 export default Browse;
