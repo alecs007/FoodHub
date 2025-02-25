@@ -33,10 +33,10 @@ h2 {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #052842b7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #575757a1;
+  background: rgba(255, 255, 255, 0.6);
 }
 input {
   outline: none;

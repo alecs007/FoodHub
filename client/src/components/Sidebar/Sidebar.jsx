@@ -1,5 +1,5 @@
 import styles from "./Sidebar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import arrow_right from "../../assets/arrow-right.png";
@@ -56,6 +56,10 @@ const Sidebar = ({
     navigate("/browse");
     setSearchTerm("");
   };
+
+  useEffect(() => {
+    if (!sidebarOpen) setToggleMenu(false);
+  }, [sidebarOpen]);
 
   return (
     <div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>

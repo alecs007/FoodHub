@@ -19,7 +19,7 @@
 }
 .sidebarcontent {
   margin-top: 10px;
-  width: 93%;
+  width: 94%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@
   gap: 7px;
 }
 .category {
-  border-radius: 2px;
+  border-radius: 5px;
   background: rgb(6, 85, 17);
   padding: 4px 7px;
   color: #fff;
