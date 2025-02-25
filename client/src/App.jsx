@@ -28,8 +28,14 @@ function App() {
   const fetchRecipes = async () => {
     try {
       const res = await axios.get("http://localhost:8080/api/approved");
-      setRecipes(res.data);
-      setRandomRecipes(getRandomRecipes(res.data));
+
+      const shuffledRecipes = res.data
+        .map((recipe) => ({ recipe, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ recipe }) => recipe);
+
+      setRecipes(shuffledRecipes);
+      setRandomRecipes(getRandomRecipes(shuffledRecipes));
     } catch (err) {
       console.log("Failed to fetch data", err);
     }
