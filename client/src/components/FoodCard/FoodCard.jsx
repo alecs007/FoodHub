@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import arrow from "../../assets/right-arrow.png";
+import save from "../../assets/save.png";
+import saved from "../../assets/saved.png";
 
 const FoodCard = ({ src, title, description, category, author }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +24,7 @@ const FoodCard = ({ src, title, description, category, author }) => {
 
   return (
     <div className={styles.foodcard}>
+      <img src={save} alt="Save" className={styles.save} />
       <img
         className={styles.cardimage}
         src={`http://localhost:8080${src}`}

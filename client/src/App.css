@@ -41,3 +41,6 @@ h2 {
 input {
   outline: none;
 }
+textarea {
+  resize: none;
+}

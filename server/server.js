@@ -82,9 +82,7 @@ app.get("/api/approved", async (req, res) => {
 
 app.get("/api/pending", async (req, res) => {
   try {
-    console.log("🔍 Fetching pending recipes...");
     const pendingPosts = await Post.find({ status: "pending" });
-    console.log("✅ Found pending posts:", pendingPosts);
     res.status(200).json(pendingPosts);
   } catch (err) {
     console.error("Failed to fetch pending posts", err);

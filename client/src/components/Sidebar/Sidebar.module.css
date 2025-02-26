@@ -42,7 +42,7 @@
   }
   img {
     width: 20px;
-    filter: invert(1);
+    filter: brightness(0) invert(1);
   }
 }
 .menu.open {

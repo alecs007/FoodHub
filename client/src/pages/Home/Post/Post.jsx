@@ -78,11 +78,12 @@ const Post = () => {
       formData.append("category", category);
       formData.append("author", author || "Anonymous");
 
-      const res = await axios.post("http://localhost:8080/api", formData, {
+      await axios.post("http://localhost:8080/api", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+
       setTitle("");
       setDescription("");
       setImageFile(null);
@@ -174,7 +175,7 @@ const Post = () => {
             <h2>Your name</h2>
             <input
               type="text"
-              placeholder="Anonymus"
+              placeholder="Anonymous"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
             />
