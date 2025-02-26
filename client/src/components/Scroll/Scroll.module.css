@@ -1,0 +1,21 @@
+.scrolltop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  z-index: 100;
+  background-color: var(--color-1);
+  border-radius: 20%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 55%;
+    width: 60%;
+    filter: invert(1);
+  }
+}

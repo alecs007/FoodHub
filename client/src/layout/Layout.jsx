@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
+import Scroll from "../components/Scroll/Scroll";
 import Footer from "../components/Footer/Footer";
 import Loader from "../components/Loader/Loader";
 
@@ -37,6 +38,7 @@ const Layout = ({ setCategoryTerm, setSearchTerm }) => {
         setCategoryTerm={setCategoryTerm}
         toggleButtonRef={toggleButtonRef}
       />
+      <Scroll />
     </div>
   );
 };
