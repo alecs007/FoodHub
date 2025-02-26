@@ -218,41 +218,6 @@ button:focus {
   color: rgb(255, 255, 255);
 }
 
-@media screen and (max-width: 1200px) {
-  .post {
-    grid-template-areas:
-      "title "
-      "form"
-      "preview";
-    grid-template-columns: auto;
-  }
-  .formcontainer {
-    align-items: center;
-    justify-content: center;
-  }
-  .previewcontainer {
-    align-items: center;
-    justify-content: center;
-  }
-  .form {
-    width: clamp(370px, 93vw, 650px);
-    margin: 0 0 50px 0;
-  }
-  .preview {
-    width: clamp(370px, 93vw, 650px);
-    margin: 0;
-  }
-  .usernameinput {
-    h2 {
-      text-wrap: nowrap;
-    }
-    input {
-      width: 100%;
-      min-width: 160px;
-    }
-  }
-}
-
 .foodcard {
   width: 330px;
   height: 400px;
@@ -318,6 +283,7 @@ button:focus {
   -webkit-line-clamp: 5;
   text-align: justify;
   text-justify: inter-word;
+  hyphens: auto;
 }
 .cardinfo {
   padding: 0 10px;
@@ -336,4 +302,39 @@ button:focus {
 .cardauthor {
   color: #c3c6cea4;
   font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .post {
+    grid-template-areas:
+      "title "
+      "form"
+      "preview";
+    grid-template-columns: auto;
+  }
+  .formcontainer {
+    align-items: center;
+    justify-content: center;
+  }
+  .previewcontainer {
+    align-items: center;
+    justify-content: center;
+  }
+  .form {
+    width: clamp(370px, 93vw, 650px);
+    margin: 0 0 50px 0;
+  }
+  .preview {
+    width: clamp(370px, 93vw, 650px);
+    margin: 0;
+  }
+  .usernameinput {
+    h2 {
+      text-wrap: nowrap;
+    }
+    input {
+      width: 100%;
+      min-width: 160px;
+    }
+  }
 }

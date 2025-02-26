@@ -87,6 +87,7 @@
   text-justify: inter-word;
   line-height: 1em;
   max-height: calc(1em * 5);
+  hyphens: auto;
 }
 .cardinfo {
   padding: 0 10px;
