@@ -14,7 +14,7 @@ const Favorites = () => {
     <div className={styles.favorites}>
       <div className={styles.favoritescontainer}>
         {savedRecipes.length === 0 && (
-          <h1 className={styles.norecipes}>No recipes saved</h1>
+          <h1 className={styles.norecipes}>Your favorites list is empty</h1>
         )}
         {savedRecipes.map((recipe) => (
           <FoodCard

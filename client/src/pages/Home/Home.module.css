@@ -22,6 +22,6 @@
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
-  filter: blur(8px) brightness(0.9) saturate(2.5);
+  filter: blur(10px) brightness(0.9) saturate(2.5);
   z-index: -1;
 }
