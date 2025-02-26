@@ -10,6 +10,7 @@ import AdminPanel from "./pages/AdminPanel/AdminPanel";
 const Home = lazy(() => import("./pages/Home/Home"));
 const Browse = lazy(() => import("./pages/Browse/Browse"));
 const Favorites = lazy(() => import("./pages/Favorites/Favorites"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -102,6 +103,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
           </Route>
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Router>
