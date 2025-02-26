@@ -1,5 +1,6 @@
 import styles from "./Hero.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import search from "../../../assets/search.png";
@@ -17,6 +18,14 @@ const Hero = ({
       navigate("/browse");
     }
   };
+
+  const [savedRecipes, setSavedRecipes] = useState([]);
+
+  useEffect(() => {
+    const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+    setSavedRecipes(savedRecipes);
+  }, []);
+
   return (
     <section className={styles.hero} id="hero">
       <div className={styles.title}>
@@ -71,6 +80,7 @@ const Hero = ({
             randomRecipes.map((recipe) => (
               <FoodCard
                 key={recipe._id}
+                _id={recipe._id}
                 src={recipe.imageUrl}
                 title={recipe.title}
                 description={recipe.description}
@@ -87,6 +97,7 @@ const Hero = ({
                 description={recipe.description}
                 category={recipe.category}
                 author={recipe.author}
+                setSavedRecipes={setSavedRecipes}
               />
             ))}
         </div>

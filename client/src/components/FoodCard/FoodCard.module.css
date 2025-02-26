@@ -20,6 +20,9 @@
   width: 25px;
   filter: invert(1);
 }
+.saved {
+  filter: invert(0);
+}
 .cardbutton {
   transform: translate(-50%, 125%);
   width: 60%;

@@ -59,6 +59,11 @@ const Sidebar = ({
     setSearchTerm("");
   };
 
+  const handleFavoritesClick = () => {
+    setSidebarOpen(false);
+    navigate("/favorites");
+  };
+
   useEffect(() => {
     if (!sidebarOpen) setToggleMenu(false);
   }, [sidebarOpen]);
@@ -112,7 +117,7 @@ const Sidebar = ({
             </div>
           )}
         </div>
-        <div className={styles.menu}>
+        <div className={styles.menu} onClick={handleFavoritesClick}>
           <h2>Favorites</h2>
           <img src={saved} alt="save" />
         </div>

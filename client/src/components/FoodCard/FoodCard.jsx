@@ -1,14 +1,20 @@
 import styles from "./FoodCard.module.css";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import arrow from "../../assets/right-arrow.png";
 import save from "../../assets/save.png";
 import saved from "../../assets/saved.png";
 
-const FoodCard = ({ src, title, description, category, author }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const FoodCard = ({
+  _id,
+  src,
+  title,
+  description,
+  category,
+  author,
+  setSavedRecipes,
+}) => {
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -22,9 +28,40 @@ const FoodCard = ({ src, title, description, category, author }) => {
     { name: "Quick meal", color: "#0077B6" },
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+    setIsSaved(savedRecipes.some((recipe) => recipe._id === _id));
+  }, [_id]);
+
+  const handleSave = () => {
+    let savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+
+    if (isSaved) {
+      savedRecipes = savedRecipes.filter((recipe) => recipe._id !== _id);
+    } else {
+      const newRecipe = { _id, title, src, description, category, author };
+      savedRecipes.push(newRecipe);
+    }
+
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+    setIsSaved(!isSaved);
+
+    if (setSavedRecipes) {
+      setSavedRecipes(savedRecipes);
+    }
+  };
+
   return (
     <div className={styles.foodcard}>
-      <img src={save} alt="Save" className={styles.save} />
+      <img
+        src={isSaved ? saved : save}
+        alt="Save"
+        className={`${styles.save} ${isSaved && styles.saved}`}
+        onClick={handleSave}
+      />
       <img
         className={styles.cardimage}
         src={`http://localhost:8080${src}`}
@@ -62,11 +99,13 @@ const FoodCard = ({ src, title, description, category, author }) => {
 };
 
 FoodCard.propTypes = {
+  _id: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  setSavedRecipes: PropTypes.func,
 };
 
 export default FoodCard;

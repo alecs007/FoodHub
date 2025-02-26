@@ -1,9 +1,8 @@
-import styles from "./Browse.module.css";
-import PropTypes from "prop-types";
+import styles from "./Favorites.module.css";
 import { useState, useEffect } from "react";
 import FoodCard from "../../components/FoodCard/FoodCard";
 
-const Browse = ({ filteredRecipes }) => {
+const Favorites = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   useEffect(() => {
@@ -12,16 +11,16 @@ const Browse = ({ filteredRecipes }) => {
   }, []);
 
   return (
-    <div className={styles.browse}>
-      <div className={styles.recipecontainer}>
-        {filteredRecipes.length === 0 && (
-          <h1 className={styles.norecipes}>No recipes found</h1>
+    <div className={styles.favorites}>
+      <div className={styles.favoritescontainer}>
+        {savedRecipes.length === 0 && (
+          <h1 className={styles.norecipes}>No recipes saved</h1>
         )}
-        {filteredRecipes.map((recipe) => (
+        {savedRecipes.map((recipe) => (
           <FoodCard
             key={recipe._id}
             _id={recipe._id}
-            src={recipe.imageUrl}
+            src={recipe.src}
             title={recipe.title}
             description={recipe.description}
             category={recipe.category}
@@ -34,7 +33,4 @@ const Browse = ({ filteredRecipes }) => {
   );
 };
 
-Browse.propTypes = {
-  filteredRecipes: PropTypes.array,
-};
-export default Browse;
+export default Favorites;

@@ -1,0 +1,22 @@
+.favorites {
+  width: 100vw;
+  height: fit-content;
+  min-height: 100vh;
+  padding-top: 78px;
+  background: #052842b7;
+  overflow: hidden;
+}
+.favoritescontainer {
+  padding: 30px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.norecipes {
+  font-size: 2em;
+  font-weight: 600;
+  color: #ffffffad;
+  text-align: center;
+  margin-top: 30px;
+}
