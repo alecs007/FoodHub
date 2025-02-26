@@ -47,8 +47,10 @@ function App() {
       setFilteredRecipes(recipes);
     } else {
       setFilteredRecipes(
-        recipes.filter((recipe) =>
-          recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+        recipes.filter(
+          (recipe) =>
+            recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            recipe.category.toLowerCase().includes(searchTerm.toLowerCase())
         )
       );
     }
