@@ -10,7 +10,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const { verify } = require("crypto");
 
 const app = express();
 const corsOptions = {

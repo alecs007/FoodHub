@@ -35,7 +35,7 @@ const AdminModal = ({ onClose, verifyAdmin }) => {
         required
       />
       <button onClick={handleSubmit}>Submit</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className={styles.error}>{error || ""}</div>
     </div>,
     document.body
   );
