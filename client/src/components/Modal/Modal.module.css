@@ -16,7 +16,7 @@
   max-width: 90vw;
   max-height: 80vh;
   width: 500px;
-  height: 700px;
+  height: fit-content;
   background-color: var(--color-1);
   border-radius: 20px;
   display: flex;
@@ -25,7 +25,8 @@
 }
 .modalimage {
   width: 100%;
-  height: 50%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 .modaltitle {
   margin: 20px 0;

@@ -24,7 +24,14 @@ const Modal = ({ onClose, src, title, description, category, author }) => {
           alt={title}
         />
         <h1 className={styles.modaltitle}>{title}</h1>
-        <p className={styles.modaldescription}>{description}</p>
+        <p className={styles.modaldescription}>
+          {description.split("\n").map((line, index) => (
+            <span key={index}>
+              {line}
+              <br />
+            </span>
+          ))}
+        </p>
         <div className={styles.modalinfo}>
           <div
             className={styles.modalcategory}

@@ -193,7 +193,15 @@ const Post = () => {
               alt={title}
             />
             <h1 className={styles.cardtitle}>{title}</h1>
-            <p className={styles.carddescription}>{description}</p>
+            <p className={styles.carddescription}>
+              {" "}
+              {description.split("\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </p>
             <div className={styles.cardinfo}>
               {category && (
                 <div
