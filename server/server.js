@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -6,16 +8,22 @@ const fs = require("fs");
 const path = require("path");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+const { verify } = require("crypto");
 
 const app = express();
 const corsOptions = {
   origin: ["http://localhost:5173"],
+  credentials: true,
 };
 const PORT = 8080;
 const MONGO_URI = "mongodb://127.0.0.1:27017/foodhub";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 app.use("/uploads", express.static("uploads"));
 
 app.use(helmet());
@@ -70,6 +78,64 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model("Post", postSchema);
 
+const verifyAdmin = (req, res, next) => {
+  const token = req.cookies.adminToken;
+  if (!token) {
+    return res
+      .status(401)
+      .json({ error: "❌ Unauthorized: Admin token not found" });
+  }
+
+  jwt.verify(token, ADMIN_PASSWORD, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ error: "❌ Unauthorized: Invalid token" });
+    }
+    req.admin = decoded;
+    next();
+  });
+};
+
+app.get("/api/admin-check", verifyAdmin, (req, res) => {
+  const token = req.cookies.adminToken;
+
+  if (!token) {
+    return res.status(401).json({ isAdmin: false, message: "No token" });
+  }
+
+  try {
+    const verified = jwt.verify(token, ADMIN_PASSWORD);
+    res.json({ isAdmin: true });
+  } catch (err) {
+    res.status(401).json({ isAdmin: false, message: "Invalid token" });
+  }
+});
+
+app.post("/api/admin/login", (req, res) => {
+  const { password } = req.body;
+  if (password !== ADMIN_PASSWORD) {
+    return res.status(401).json({ error: "❌ Unauthorized: Invalid password" });
+  }
+  const token = jwt.sign({ role: "admin" }, ADMIN_PASSWORD, {
+    expiresIn: "1h",
+  });
+
+  res.cookie("adminToken", token, {
+    httpOnly: true,
+    sameSite: "Strict",
+    secure: true,
+  });
+  res.status(200).json({ message: "✅ Admin logged in successfully" });
+});
+
+app.post("/api/admin/logout", (req, res) => {
+  res.clearCookie("adminToken", {
+    httpOnly: true,
+    sameSite: "Strict",
+    secure: true,
+  });
+  res.status(200).json({ message: "✅ Admin logged out successfully" });
+});
+
 app.get("/api/approved", async (req, res) => {
   try {
     const posts = await Post.find({ status: "approved" });
@@ -113,7 +179,7 @@ app.post("/api", upload.single("image"), async (req, res) => {
   }
 });
 
-app.delete("/api/:id", async (req, res) => {
+app.delete("/api/:id", verifyAdmin, async (req, res) => {
   try {
     const id = req.params.id;
     const deletedPost = await Post.findByIdAndDelete(id);
@@ -138,7 +204,7 @@ app.delete("/api/:id", async (req, res) => {
   }
 });
 
-app.patch("/api/:id/approve", async (req, res) => {
+app.patch("/api/:id/approve", verifyAdmin, async (req, res) => {
   try {
     const id = req.params.id;
     const updatedPost = await Post.findByIdAndUpdate(

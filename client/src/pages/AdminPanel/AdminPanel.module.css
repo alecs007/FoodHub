@@ -49,6 +49,9 @@
 .buttoncontainer {
   display: flex;
   gap: 10px;
+  max-width: 90vw;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .categorybutton {
   cursor: pointer;
@@ -60,4 +63,18 @@
   border: none;
   font-size: 15px;
   font-weight: 600;
+}
+.logoutbutton {
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(206, 119, 119, 0.9);
+  padding: 7px 10px;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+.unauthorized {
+  margin-top: 100px;
 }

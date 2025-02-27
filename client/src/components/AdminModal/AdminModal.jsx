@@ -2,15 +2,25 @@ import styles from "./AdminModal.module.css";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import { useState } from "react";
+import axios from "axios";
 
-const AdminModal = ({ onClose }) => {
+const AdminModal = ({ onClose, verifyAdmin }) => {
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = () => {
-    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
-      onClose();
-    } else {
-      alert("Incorrect password");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await axios.post(
+        "http://localhost:8080/api/admin/login",
+        { password },
+        { withCredentials: true }
+      );
+      verifyAdmin();
+      setTimeout(() => onClose(), 100);
+    } catch (err) {
+      setError(err.response?.data?.error || "❌ Server error");
     }
   };
   return ReactDOM.createPortal(
@@ -21,9 +31,11 @@ const AdminModal = ({ onClose }) => {
         value={password}
         placeholder="Enter password"
         onChange={(e) => setPassword(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+        onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
+        required
       />
       <button onClick={handleSubmit}>Submit</button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>,
     document.body
   );
@@ -31,6 +43,7 @@ const AdminModal = ({ onClose }) => {
 
 AdminModal.propTypes = {
   onClose: PropTypes.func.isRequired,
+  verifyAdmin: PropTypes.func.isRequired,
 };
 
 export default AdminModal;
