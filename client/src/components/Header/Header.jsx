@@ -1,15 +1,26 @@
 import styles from "./Header.module.css";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ setSidebarOpen, sidebarOpen, toggleButtonRef }) => {
+  const navigate = useNavigate();
+
+  const handleIconClick = () => {
+    setSidebarOpen(false);
+    navigate("/");
+    setTimeout(() => {
+      const section = document.getElementById("hero");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   return (
     <header className={styles.header}>
-      <Link to="/">
-        <div className={styles.logo}>
-          Food<span className={styles.span}>Hub</span>
-        </div>
-      </Link>
+      <div className={styles.logo} onClick={handleIconClick}>
+        Food<span className={styles.span}>Hub</span>
+      </div>
       <div
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className={`${styles.togglebutton} ${sidebarOpen ? styles.open : ""}`}
