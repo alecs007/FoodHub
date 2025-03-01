@@ -24,6 +24,7 @@ const Hero = ({
   useEffect(() => {
     const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
     setSavedRecipes(savedRecipes);
+    setSearchTerm("");
   }, []);
 
   return (

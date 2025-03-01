@@ -98,7 +98,13 @@ function App() {
             />
             <Route
               path="/browse"
-              element={<Browse filteredRecipes={filteredRecipes} />}
+              element={
+                <Browse
+                  filteredRecipes={filteredRecipes}
+                  setSearchTerm={setSearchTerm}
+                  searchTerm={searchTerm}
+                />
+              }
             />
             <Route path="/favorites" element={<Favorites />} />
           </Route>
