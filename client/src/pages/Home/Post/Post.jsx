@@ -89,6 +89,7 @@ const Post = () => {
       setTitle("");
       setDescription("");
       setImageFile(null);
+      setPreviewImage(null);
       setCategory("");
       setAuthor("");
       setFileName("No photo chosen");
