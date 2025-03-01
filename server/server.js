@@ -103,7 +103,7 @@ app.get("/api/admin-check", verifyAdmin, (req, res) => {
 
   try {
     const verified = jwt.verify(token, ADMIN_PASSWORD);
-    res.json({ isAdmin: true });
+    res.status(200).json({ isAdmin: true });
   } catch (err) {
     res.status(401).json({ isAdmin: false, message: "Invalid token" });
   }

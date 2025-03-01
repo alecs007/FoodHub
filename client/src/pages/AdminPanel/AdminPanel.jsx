@@ -75,11 +75,6 @@ const AdminPanel = () => {
     fetchPendingRecipes();
   }, []);
 
-  useEffect(() => {
-    fetchRecipes();
-    fetchPendingRecipes();
-  }, [recipes, pendingRecipes]);
-
   const handleLogout = async () => {
     try {
       await axios.post(
@@ -109,6 +104,8 @@ const AdminPanel = () => {
           id={editedRecipe._id}
           recipe={editedRecipe}
           onClose={() => setEditedRecipe(null)}
+          fetchPendingRecipes={fetchPendingRecipes}
+          fetchRecipes={fetchRecipes}
         />
       )}
       {!isAdmin && <h1 className={styles.unauthorized}>Unauthorized</h1>}

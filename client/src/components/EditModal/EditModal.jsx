@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-const EditModal = ({ id, recipe, onClose }) => {
+const EditModal = ({
+  id,
+  recipe,
+  onClose,
+  fetchRecipes,
+  fetchPendingRecipes,
+}) => {
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -74,6 +80,12 @@ const EditModal = ({ id, recipe, onClose }) => {
 
       console.log("✅ Post updated:", res.data);
       alert("✅ Post updated!");
+
+      if (recipe.status === "pending") {
+        fetchPendingRecipes();
+      } else {
+        fetchRecipes();
+      }
       onClose();
     } catch (err) {
       console.log("Failed to update post. Try again.", err);
