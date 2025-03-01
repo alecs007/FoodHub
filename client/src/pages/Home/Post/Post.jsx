@@ -9,6 +9,7 @@ const Post = () => {
   const [imageFile, setImageFile] = useState(null);
   const [category, setCategory] = useState("");
   const [author, setAuthor] = useState("");
+  const [previewImage, setPreviewImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const categories = [
@@ -34,6 +35,7 @@ const Post = () => {
     setFileName(file ? file.name : "No photo chosen");
     console.log(file);
     setImageFile(file);
+    setPreviewImage(URL.createObjectURL(file));
   };
 
   const handleSubmit = async () => {
@@ -189,7 +191,7 @@ const Post = () => {
           <div className={styles.foodcard}>
             <img
               className={styles.cardimage}
-              src={imageFile ? URL.createObjectURL(imageFile) : no_image}
+              src={previewImage ? previewImage : no_image}
               alt={title}
             />
             <h1 className={styles.cardtitle}>{title}</h1>
@@ -225,10 +227,9 @@ const Post = () => {
           </div>
 
           <h3>
-            <span className={styles.red}>DISCLAIMER</span> Any information that
-            is irrelevant to food domain will not be accepted. Before posting,
-            consider to check if the details of your recipe are clear and
-            precise.
+            <span className={styles.red}>DISCLAIMER:</span> Only food-related
+            information will be accepted. Before posting, please ensure your
+            recipe details are clear and accurate.
           </h3>
         </div>
       </div>

@@ -42,7 +42,7 @@
   font-weight: 600;
   text-align: center;
   font-family: sans-serif;
-  height: 250px;
+  height: 270px;
   overflow: auto;
   padding: 0 20px;
   text-align: justify;
@@ -50,7 +50,7 @@
   hyphens: auto;
 }
 .modalinfo {
-  height: 85px;
+  height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
