@@ -60,8 +60,8 @@ const Post = () => {
         setErrorMessage("Food image is required");
         return;
       }
-      if (imageFile.size > 1000 * 1024 * 1024) {
-        setErrorMessage("Image size should be less than 1000MB");
+      if (imageFile.size > 1024 * 1024) {
+        setErrorMessage("Image size should be less than 1MB");
         return;
       }
       if (category.length <= 0) {
@@ -106,6 +106,7 @@ const Post = () => {
       );
     }
   };
+
   return (
     <section className={styles.post} id="post">
       <div className={styles.title}>

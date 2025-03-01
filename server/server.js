@@ -203,6 +203,53 @@ app.delete("/api/:id", verifyAdmin, async (req, res) => {
   }
 });
 
+app.put("/api/:id", verifyAdmin, upload.single("image"), async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, category, author } = req.body;
+
+    const existingPost = await Post.findById(id);
+    if (!existingPost) {
+      return res.status(404).json({ error: "❌ Post not found" });
+    }
+
+    let updatedData = {
+      title: title || existingPost.title,
+      description: description || existingPost.description,
+      category: category || existingPost.category,
+      author: author || existingPost.author,
+      imageUrl: existingPost.imageUrl,
+    };
+
+    if (title) updatedData.title = title;
+    if (description) updatedData.description = description;
+    if (category) updatedData.category = category;
+    if (author) updatedData.author = author;
+
+    if (req.file && existingPost.imageUrl) {
+      const oldImagePath = path.join(
+        __dirname,
+        "uploads",
+        path.basename(existingPost.imageUrl)
+      );
+      if (fs.existsSync(oldImagePath)) {
+        fs.unlinkSync(oldImagePath);
+      }
+      updatedData.imageUrl = `/uploads/${req.file.filename}`;
+    }
+
+    const updatedPost = await Post.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+
+    res
+      .status(200)
+      .json({ message: "✅ Post updated successfully", updatedPost });
+  } catch (err) {
+    res.status(400).json({ error: "❌ Failed to update post" });
+  }
+});
+
 app.patch("/api/:id/approve", verifyAdmin, async (req, res) => {
   try {
     const id = req.params.id;

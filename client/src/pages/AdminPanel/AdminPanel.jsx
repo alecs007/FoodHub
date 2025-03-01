@@ -1,5 +1,6 @@
 import styles from "./AdminPanel.module.css";
 import AdminModal from "../../components/AdminModal/AdminModal";
+import EditModal from "../../components/EditModal/EditModal";
 import FoodCard from "../../components/FoodCard/FoodCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -10,6 +11,7 @@ const AdminPanel = () => {
   const [showPending, setShowPending] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [pendingRecipes, setPendingRecipes] = useState([]);
+  const [editedRecipe, setEditedRecipe] = useState(null);
 
   const verifyAdmin = async () => {
     try {
@@ -73,6 +75,11 @@ const AdminPanel = () => {
     fetchPendingRecipes();
   }, []);
 
+  useEffect(() => {
+    fetchRecipes();
+    fetchPendingRecipes();
+  }, [recipes, pendingRecipes]);
+
   const handleLogout = async () => {
     try {
       await axios.post(
@@ -95,6 +102,13 @@ const AdminPanel = () => {
         <AdminModal
           onClose={() => setIsOpen(false)}
           verifyAdmin={verifyAdmin}
+        />
+      )}
+      {editedRecipe && (
+        <EditModal
+          id={editedRecipe._id}
+          recipe={editedRecipe}
+          onClose={() => setEditedRecipe(null)}
         />
       )}
       {!isAdmin && <h1 className={styles.unauthorized}>Unauthorized</h1>}
@@ -127,14 +141,22 @@ const AdminPanel = () => {
             {!showPending &&
               recipes.map((recipe) => (
                 <div className={styles.adminrecipe} key={recipe._id}>
-                  <button
-                    className={styles.adminbutton}
-                    style={{ backgroundColor: "#e74c3c" }}
-                    onClick={() => deleteRecipe(recipe._id)}
-                  >
-                    Delete
-                  </button>
-
+                  <div className={styles.buttoncontainer}>
+                    <button
+                      className={styles.adminbutton}
+                      style={{ backgroundColor: "#e74c3c" }}
+                      onClick={() => deleteRecipe(recipe._id)}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className={styles.adminbutton}
+                      style={{ backgroundColor: "#4d9cdd" }}
+                      onClick={() => setEditedRecipe(recipe)}
+                    >
+                      Edit
+                    </button>
+                  </div>
                   <FoodCard
                     src={recipe.imageUrl}
                     title={recipe.title}
@@ -161,6 +183,13 @@ const AdminPanel = () => {
                       onClick={() => approveRecipe(recipe._id)}
                     >
                       Approve
+                    </button>
+                    <button
+                      className={styles.adminbutton}
+                      style={{ backgroundColor: "#4d9cdd" }}
+                      onClick={() => setEditedRecipe(recipe)}
+                    >
+                      Edit
                     </button>
                   </div>
                   <FoodCard
