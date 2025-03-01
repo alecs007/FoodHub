@@ -103,6 +103,7 @@ function App() {
                   filteredRecipes={filteredRecipes}
                   setSearchTerm={setSearchTerm}
                   searchTerm={searchTerm}
+                  categoryTerm={categoryTerm}
                 />
               }
             />

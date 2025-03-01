@@ -4,7 +4,12 @@ import { useState, useEffect } from "react";
 import FoodCard from "../../components/FoodCard/FoodCard";
 import search from "../../assets/search.png";
 
-const Browse = ({ filteredRecipes, setSearchTerm, searchTerm }) => {
+const Browse = ({
+  filteredRecipes,
+  setSearchTerm,
+  searchTerm,
+  categoryTerm,
+}) => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [browseSearchTerm, setBrowseSearchTerm] = useState(searchTerm);
 
@@ -15,24 +20,27 @@ const Browse = ({ filteredRecipes, setSearchTerm, searchTerm }) => {
 
   return (
     <div className={styles.browse}>
-      <div className={styles.inputcontainer}>
-        <input
-          className={styles.search}
-          type="text"
-          value={browseSearchTerm}
-          onChange={(e) => setBrowseSearchTerm(e.target.value)}
-          onKeyDown={(e) =>
-            e.key === "Enter" && setSearchTerm(browseSearchTerm)
-          }
-          placeholder="Search for food recipes..."
-        />
-        <div
-          className={styles.searchicon}
-          onClick={() => setSearchTerm(browseSearchTerm)}
-        >
-          <img src={search} alt="search" />
+      {!categoryTerm && (
+        <div className={styles.inputcontainer}>
+          <input
+            className={styles.search}
+            type="text"
+            value={browseSearchTerm}
+            onChange={(e) => setBrowseSearchTerm(e.target.value)}
+            onKeyDown={(e) =>
+              e.key === "Enter" && setSearchTerm(browseSearchTerm)
+            }
+            placeholder="Search for food recipes..."
+          />
+          <div
+            className={styles.searchicon}
+            onClick={() => setSearchTerm(browseSearchTerm)}
+          >
+            <img src={search} alt="search" />
+          </div>
         </div>
-      </div>
+      )}
+
       <div className={styles.recipecontainer}>
         {filteredRecipes.length === 0 && (
           <h1 className={styles.norecipes}>No recipes found</h1>
@@ -58,5 +66,6 @@ Browse.propTypes = {
   filteredRecipes: PropTypes.array,
   setSearchTerm: PropTypes.func,
   searchTerm: PropTypes.string,
+  categoryTerm: PropTypes.string,
 };
 export default Browse;
