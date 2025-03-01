@@ -43,7 +43,8 @@
   text-align: center;
   font-family: sans-serif;
   height: 270px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 0 20px;
   text-align: justify;
   text-justify: inter-word;

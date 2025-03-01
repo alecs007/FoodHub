@@ -52,15 +52,16 @@ const EditModal = ({ id, recipe, onClose }) => {
         alert("Food category is required");
         return;
       }
-      if (editedAuthor.length <= 0) {
-        setEditedAuthor("Anonymous");
+      if (editedAuthor.trim() === "") {
+        alert("Author name is required");
+        return;
       }
 
       const formData = new FormData();
       formData.append("title", editedTitle);
       formData.append("description", editedDescription);
       formData.append("category", editedCategory);
-      formData.append("author", editedAuthor || "Anonymous");
+      formData.append("author", editedAuthor);
 
       if (editedImage) {
         formData.append("image", editedImage);
