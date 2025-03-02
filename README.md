@@ -41,5 +41,6 @@
 
    • **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
 
-![foodhub_presentation](https://github.com/user-attachments/assets/0d3fd8c3-a133-4046-a839-e8629e28aa4c)
+![foohub_presentation2](https://github.com/user-attachments/assets/970eb832-50dc-4b54-97d9-08688b68365d)
+
 
