@@ -24,6 +24,9 @@
    • **Recipe Modal for Detailed View:** Each recipe can be opened in a modal window for a better reading experience, displaying ingredients, preparation steps, and images.
    
    • **Save Favorites:** Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
+
+![foodhub3_ss](https://github.com/user-attachments/assets/0c7c96cd-29f7-403f-be47-5eb541759715)
+
  
 ## 🔹 Admin Authentication & Management
    • **Secure JWT Authentication:** Only the admin can log in and manage the platform.
