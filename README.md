@@ -12,7 +12,8 @@
    
    • **Admin Moderation:** Only the admin has the ability to approve, edit, or delete recipes through an intuitive admin panel.
 
-![foodhub2_ss](https://github.com/user-attachments/assets/7315c726-504c-4683-9c9a-3fdb9eb16dcc)
+![foodhub2_ss](https://github.com/user-attachments/assets/50e9005c-e751-444f-b5de-f3c777e9fc41)
+
 
 
 ## 🔹 Recipe Discovery & Search
