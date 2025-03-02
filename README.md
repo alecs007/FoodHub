@@ -32,6 +32,9 @@
    • **Secure JWT Authentication:** Only the admin can log in and manage the platform.
    
    • **Admin Dashboard:** A private panel where the admin can approve, edit, or remove user-submitted recipes.
+
+![foodhub4_ss](https://github.com/user-attachments/assets/b9d35a89-f31c-45b3-b657-fee3c6c042dc)
+
    
 ## 🔹 Responsive & Optimized Design
 • **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
