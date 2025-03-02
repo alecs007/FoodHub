@@ -18,3 +18,11 @@
    
    • **Save Favorites:** Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
  
+## 🔹 Admin Authentication & Management
+   • **Secure JWT Authentication:** Only the admin can log in and manage the platform.
+   
+   • **Admin Dashboard:** A private panel where the admin can approve, edit, or remove user-submitted recipes.
+   
+## 🔹 Responsive & Optimized Design
+• **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
+• **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
