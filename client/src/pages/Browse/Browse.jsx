@@ -12,6 +12,16 @@ const Browse = ({
 }) => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [browseSearchTerm, setBrowseSearchTerm] = useState(searchTerm);
+  const [visibleRecipes, setVisibleRecipes] = useState(30);
+  const [loading, setLoading] = useState(false);
+
+  const handleLoadMore = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setVisibleRecipes((prevVisibleRecipes) => prevVisibleRecipes + 30);
+    }, 300);
+  };
 
   useEffect(() => {
     const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
@@ -45,7 +55,7 @@ const Browse = ({
         {filteredRecipes.length === 0 && (
           <h1 className={styles.norecipes}>No recipes found</h1>
         )}
-        {filteredRecipes.map((recipe) => (
+        {filteredRecipes.slice(0, visibleRecipes).map((recipe) => (
           <FoodCard
             key={recipe._id}
             _id={recipe._id}
@@ -56,8 +66,13 @@ const Browse = ({
             author={recipe.author}
             setSavedRecipes={setSavedRecipes}
           />
-        ))}
+        ))}{" "}
       </div>
+      {visibleRecipes < filteredRecipes.length && (
+        <button className={styles.loadmore} onClick={handleLoadMore}>
+          {loading ? "Loading..." : "Load more"}
+        </button>
+      )}
     </div>
   );
 };
