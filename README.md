@@ -45,15 +45,22 @@
 
 ## Technology Stack
 
-   - **Frontend:** React.js (Vite), Vanilla CSS for styling.
+   • **Frontend:** React.js (Vite), Vanilla CSS for styling.
 
-   - **Backend:** Node.js with Express.js for handling API requests.
+   • **Backend:** Node.js with Express.js for handling API requests.
 
-   - **Database:** MongoDB with Mongoose for efficient data storage.
+   • **Database:** MongoDB with Mongoose for efficient data storage.
 
-   - **Authentication:** JWT-based authentication for secure login.
+   • **Authentication:** JWT-based authentication for secure login.
 
-   - **Hosting:** Deployed using Netlify for frontend and Railway for backend.
+   • **Hosting:** Deployed using Netlify for frontend and Railway for backend.
+
+## 📌 Notes
+• A local version of the project is available in the repository, using a local MongoDB database instead of a hosted one.
+
+• In this version, uploaded images are stored on the server using Multer disk storage instead of cloud storage.
+
+• This local version does not include a deployment platform and is meant for offline/local use only.
 
 
 
