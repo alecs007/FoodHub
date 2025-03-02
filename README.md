@@ -43,7 +43,7 @@
 
 ![foodhub_presentation3](https://github.com/user-attachments/assets/63ab43dc-0abd-4501-88f1-211ad2a3f7ff)
 
-Technology Stack
+## Technology Stack
 
 **Frontend:** React.js (Vite), Vanilla CSS for styling.
 
