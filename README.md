@@ -37,6 +37,9 @@
 
    
 ## 🔹 Responsive & Optimized Design
-• **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
+   • **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
 
-• **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
+   • **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
+
+![foodhub_presentation](https://github.com/user-attachments/assets/0d3fd8c3-a133-4046-a839-e8629e28aa4c)
+
