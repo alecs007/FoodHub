@@ -43,6 +43,18 @@
 
 ![foodhub_presentation3](https://github.com/user-attachments/assets/63ab43dc-0abd-4501-88f1-211ad2a3f7ff)
 
+Technology Stack
+
+**Frontend:** React.js (Vite), Vanilla CSS for styling.
+
+**Backend:** Node.js with Express.js for handling API requests.
+
+**Database:** MongoDB with Mongoose for efficient data storage.
+
+**Authentication:**JWT-based authentication for secure login.
+
+**Hosting:** Deployed using Netlify for frontend and Railway for backend.
+
 
 
 
