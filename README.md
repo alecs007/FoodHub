@@ -25,4 +25,5 @@
    
 ## 🔹 Responsive & Optimized Design
 • **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
+
 • **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
