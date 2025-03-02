@@ -8,4 +8,13 @@
    • Pending Review Status: Submitted recipes enter a pending status until they are reviewed.
    
    • Admin Moderation: Only the admin has the ability to approve, edit, or delete recipes through an intuitive admin panel.
+
+## 🔹 Recipe Discovery & Search
+   • Quick Search by Name: A simple search function helps users find specific recipes instantly.
+
+   • Browse Recipes by Category: Users can explore recipes based on predefined categories like Breakfast, Lunch, Dinner, or Desserts.
+
+   • Recipe Modal for Detailed View: Each recipe can be opened in a modal window for a better reading experience, displaying ingredients, preparation steps, and images.
+   
+   • Save Favorites: Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
  
