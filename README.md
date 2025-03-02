@@ -45,15 +45,15 @@
 
 ## Technology Stack
 
-**Frontend:** React.js (Vite), Vanilla CSS for styling.
+- **Frontend:** React.js (Vite), Vanilla CSS for styling.
 
-**Backend:** Node.js with Express.js for handling API requests.
+- **Backend:** Node.js with Express.js for handling API requests.
 
-**Database:** MongoDB with Mongoose for efficient data storage.
+- **Database:** MongoDB with Mongoose for efficient data storage.
 
-**Authentication:**JWT-based authentication for secure login.
+- **Authentication:** JWT-based authentication for secure login.
 
-**Hosting:** Deployed using Netlify for frontend and Railway for backend.
+- **Hosting:** Deployed using Netlify for frontend and Railway for backend.
 
 
 
