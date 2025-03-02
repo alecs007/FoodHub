@@ -72,6 +72,7 @@ const Sidebar = ({
   }, [sidebarOpen]);
 
   const sidebarRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -89,7 +90,7 @@ const Sidebar = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [setSidebarOpen, toggleButtonRef]);
 
   return (
     <div
