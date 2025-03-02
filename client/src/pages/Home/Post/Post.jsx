@@ -11,6 +11,7 @@ const Post = () => {
   const [author, setAuthor] = useState("");
   const [previewImage, setPreviewImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
@@ -39,6 +40,7 @@ const Post = () => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     try {
       if (title.length > 30) {
         setErrorMessage("Food name should be less than 25 characters");
@@ -97,6 +99,7 @@ const Post = () => {
       alert(
         "✅ Your recipe has been submitted successfully! It will be reviewed by an admin before being published."
       );
+      setLoading(false);
     } catch (err) {
       console.log(
         " There was an error submitting your recipe. Please try again.",
@@ -105,6 +108,7 @@ const Post = () => {
       setErrorMessage(
         "❌ There was an error submitting your recipe. Please try again."
       );
+      setLoading(false);
     }
   };
 
@@ -222,7 +226,11 @@ const Post = () => {
             </div>
           </div>
           <div className={styles.buttoncontainer}>
-            <button className={styles.button} onClick={() => handleSubmit()}>
+            <button
+              className={styles.button}
+              onClick={() => handleSubmit()}
+              disabled={loading}
+            >
               POST !
             </button>
             <div className={styles.status}>{errorMessage}</div>
