@@ -12,12 +12,17 @@ import Loader from "../components/Loader/Loader";
 
 const Layout = ({ setCategoryTerm, setSearchTerm }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toggleButtonRef = useRef(null);
 
   const { pathname } = useLocation();
 
   useEffect(() => {
+    setLoading(true);
     window.scrollTo({ top: 0 });
+    setTimeout(() => {
+      setLoading(false);
+    }, 170);
   }, [pathname]);
 
   return (
@@ -28,9 +33,13 @@ const Layout = ({ setCategoryTerm, setSearchTerm }) => {
         setSearchTerm={setSearchTerm}
         toggleButtonRef={toggleButtonRef}
       />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      )}
       <Footer />
       <Sidebar
         sidebarOpen={sidebarOpen}

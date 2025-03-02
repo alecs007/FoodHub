@@ -15,6 +15,7 @@ const Hero = ({
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
+      setSearchTerm(heroSearchTerm);
       navigate("/browse");
     }
   };
@@ -27,6 +28,8 @@ const Hero = ({
     setSearchTerm("");
   }, []);
 
+  const [heroSearchTerm, setHeroSearchTerm] = useState(searchTerm);
+
   return (
     <section className={styles.hero} id="hero">
       <div className={styles.title}>
@@ -36,12 +39,18 @@ const Hero = ({
         <input
           className={styles.search}
           type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={heroSearchTerm}
+          onChange={(e) => setHeroSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Search for food recipes..."
         />
-        <div className={styles.searchicon} onClick={() => navigate("/browse")}>
+        <div
+          className={styles.searchicon}
+          onClick={() => {
+            setSearchTerm(heroSearchTerm);
+            navigate("/browse");
+          }}
+        >
           <img src={search} alt="search" />
         </div>
       </div>
