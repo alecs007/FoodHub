@@ -4,6 +4,8 @@
 
 ## 🔹 Recipe Submission & Approval System
    • Users Can Submit Recipes: Visitors can share their own recipes by submitting details like images, category, and instructions.
+   
    • Pending Review Status: Submitted recipes enter a pending status until they are reviewed.
+   
    • Admin Moderation: Only the admin has the ability to approve, edit, or delete recipes through an intuitive admin panel.
  
