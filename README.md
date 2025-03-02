@@ -1,6 +1,6 @@
 # <h1 align="center"><strong><em>FoodHub 🍔</em></strong></h1>
 
-**FoodHub** is a modern recipe-sharing platform built with the MERN (MongoDB, Express.js, React.js, Node.js) stack.It allows users to explore a diverse range of recipes from various cuisines and also post their best meals, making it an engaging hub for food enthusiasts. The website is designed to be user-friendly, visually appealing, and feature-rich, ensuring a smooth experience for both home cooks and professional chefs.
+**FoodHub** is a modern recipe-sharing platform built with the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to explore a diverse range of recipes from various cuisines and also post their best meals, making it an engaging hub for food enthusiasts. The website is designed to be user-friendly, visually appealing, and feature-rich, ensuring a smooth experience for both home cooks and professional chefs.
 
 ![foodhub1_ss](https://github.com/user-attachments/assets/decaff87-909c-4b21-9434-cec935b52f0c)
 
