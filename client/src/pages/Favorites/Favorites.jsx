@@ -6,6 +6,7 @@ const Favorites = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0 }, { behavior: "smooth" });
     const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
     setSavedRecipes(savedRecipes);
   }, []);

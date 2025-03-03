@@ -50,7 +50,7 @@ const EditModal = ({
         alert("Food description is required");
         return;
       }
-      if (editedImage && editedImage.size > 1024 * 1024) {
+      if (editedImage && editedImage.size > 5 * 1024 * 1024) {
         alert("Image size should be less than 1MB");
         return;
       }

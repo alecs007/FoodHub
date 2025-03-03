@@ -34,11 +34,13 @@ const Sidebar = ({
     setSidebarOpen(false);
     navigate("/");
     setTimeout(() => {
-      const section = document.getElementById("post");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+      requestAnimationFrame(() => {
+        const section = document.getElementById("post");
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }, 500);
   };
 
   const handleHomeClick = () => {

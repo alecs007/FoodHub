@@ -43,30 +43,37 @@ const Post = () => {
     setLoading(true);
     try {
       if (title.length > 30) {
+        setLoading(false);
         setErrorMessage("Food name should be less than 25 characters");
         return;
       }
       if (author.length > 25) {
+        setLoading(false);
         setErrorMessage("Author name should be less than 25 characters");
         return;
       }
       if (title.length <= 0) {
+        setLoading(false);
         setErrorMessage("Food name is required");
         return;
       }
       if (description.length <= 0) {
+        setLoading(false);
         setErrorMessage("Food description is required");
         return;
       }
       if (!imageFile) {
+        setLoading(false);
         setErrorMessage("Food image is required");
         return;
       }
-      if (imageFile.size > 1024 * 1024) {
+      if (imageFile.size > 5 * 1024 * 1024) {
+        setLoading(false);
         setErrorMessage("Image size should be less than 1MB");
         return;
       }
       if (category.length <= 0) {
+        setLoading(false);
         setErrorMessage("Food category is required");
         return;
       }
