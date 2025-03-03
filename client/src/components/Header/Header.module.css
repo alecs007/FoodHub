@@ -45,8 +45,8 @@
 }
 .togglebutton.open .bar:nth-child(1) {
   transform: rotate(45deg) translateY(15px) translateX(1px);
-  margin-left: 10px;
-  width: 33px;
+  margin-left: 9px;
+  width: 32px;
 }
 
 .togglebutton.open .bar:nth-child(2) {
@@ -55,6 +55,6 @@
 
 .togglebutton.open .bar:nth-child(3) {
   transform: rotate(-45deg) translateY(-15px) translateX(1px);
-  margin-left: 10px;
-  width: 33px;
+  margin-left: 9px;
+  width: 32px;
 }
