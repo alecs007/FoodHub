@@ -85,9 +85,9 @@ const Hero = ({
         </button>
       </Link>
       <div className={styles.slider}>
-        <div className={styles.cards}>
-          {randomRecipes &&
-            randomRecipes.map((recipe) => (
+        {randomRecipes ? (
+          <div className={styles.cards}>
+            {randomRecipes?.map((recipe) => (
               <FoodCard
                 key={recipe._id}
                 _id={recipe._id}
@@ -98,8 +98,7 @@ const Hero = ({
                 author={recipe.author}
               />
             ))}
-          {randomRecipes &&
-            randomRecipes.map((recipe) => (
+            {randomRecipes?.map((recipe) => (
               <FoodCard
                 key={recipe._id}
                 src={recipe.imageUrl}
@@ -110,7 +109,10 @@ const Hero = ({
                 setSavedRecipes={setSavedRecipes}
               />
             ))}
-        </div>
+          </div>
+        ) : (
+          <div className={styles.spinner}></div>
+        )}
       </div>
     </section>
   );
