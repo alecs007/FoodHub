@@ -26,6 +26,7 @@ const Hero = ({
     const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
     setSavedRecipes(savedRecipes);
     setSearchTerm("");
+    setCategoryTerm("");
   }, []);
 
   const [heroSearchTerm, setHeroSearchTerm] = useState(searchTerm);
