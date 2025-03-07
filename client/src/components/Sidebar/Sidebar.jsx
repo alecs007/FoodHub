@@ -6,6 +6,7 @@ import arrow_right from "../../assets/arrow-right.png";
 import arrow_down from "../../assets/arrow-down.png";
 import right_arrow from "../../assets/right-arrow.png";
 import saved from "../../assets/saved.png";
+import explore from "../../assets/explore.png";
 
 const Sidebar = ({
   sidebarOpen,
@@ -67,6 +68,15 @@ const Sidebar = ({
   const handleFavoritesClick = () => {
     setSidebarOpen(false);
     navigate("/favorites");
+  };
+
+  const handleExploreClick = () => {
+    setSidebarOpen(false);
+    setCategoryTerm("");
+    navigate("/browse");
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
   };
 
   useEffect(() => {
@@ -134,6 +144,10 @@ const Sidebar = ({
         <div className={styles.menu} onClick={handlePostClick}>
           <h2>Post recipe</h2>
           <img src={right_arrow} alt="arrow" />
+        </div>
+        <div className={styles.menu} onClick={handleExploreClick}>
+          <h2>Explore</h2>
+          <img src={explore} alt="explore" />
         </div>
       </div>
     </div>
