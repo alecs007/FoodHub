@@ -25,6 +25,8 @@
    
    • **Save Favorites:** Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
 
+   • **Easy Sharing:** Users can quickly share recipes with others via a share button.
+   
 ![image](https://github.com/user-attachments/assets/c956b9a5-94fd-47b2-87a3-db2dec705a73)
 
 
