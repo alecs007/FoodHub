@@ -40,13 +40,13 @@
   display: block;
   width: 100%;
   height: 4px;
+  border-radius: 10px;
   background-color: #ffffff;
   transition: transform 0.3s ease, opacity 0.1s ease;
 }
 .togglebutton.open .bar:nth-child(1) {
-  transform: rotate(45deg) translateY(15px) translateX(1px);
-  margin-left: 8px;
-  width: 33px;
+  transform: rotate(45deg) translateY(16px);
+  margin-left: 10px;
 }
 
 .togglebutton.open .bar:nth-child(2) {
@@ -54,7 +54,6 @@
 }
 
 .togglebutton.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translateY(-15px) translateX(1px);
-  margin-left: 8px;
-  width: 33px;
+  transform: rotate(-45deg) translateY(-16px);
+  margin-left: 10px;
 }
