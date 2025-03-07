@@ -15,7 +15,6 @@
 ![foodhub2_ss](https://github.com/user-attachments/assets/50e9005c-e751-444f-b5de-f3c777e9fc41)
 
 
-
 ## 🔹 Recipe Discovery & Search
    • **Quick Search by Name:** A simple search function helps users find specific recipes instantly.
 
@@ -27,8 +26,7 @@
 
    • **Easy Sharing:** Users can quickly share a recipe with others via a share button, which opens the page directly to that specific recipe.
    
-![image](https://github.com/user-attachments/assets/c956b9a5-94fd-47b2-87a3-db2dec705a73)
-
+![image](https://github.com/user-attachments/assets/99075193-bdeb-48f3-b58b-0f60dedc0aa1)
 
  
 ## 🔹 Admin Authentication & Management
