@@ -65,7 +65,7 @@
 
 ## Why FoodHub?
 
-**FoodHub** helps you quickly find and enjoy high-quality recipes with a clutter-free, user-friendly design and carefully curated content.
+**FoodHub** helps you discover high-quality recipes with a clean, user-friendly design. Whether you're a beginner or expert, find easy-to-follow recipes, save your favorites, share them with others, and enjoy a seamless experience from browsing to cooking.
 
 
 
