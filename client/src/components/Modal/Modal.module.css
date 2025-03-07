@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 .modalimage {
   width: 100%;
@@ -86,6 +87,16 @@
   font-weight: 700;
   font-family: sans-serif;
 }
+.share {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+  cursor: pointer;
+  width: 25px;
+  filter: invert(1);
+}
+
 @media screen and (max-width: 600px) {
   .modalauthor {
     display: none;

@@ -1,7 +1,9 @@
 import styles from "./Browse.module.css";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import FoodCard from "../../components/FoodCard/FoodCard";
+import Modal from "../../components/Modal/Modal";
 import search from "../../assets/search.png";
 
 const Browse = ({
@@ -14,6 +16,33 @@ const Browse = ({
   const [browseSearchTerm, setBrowseSearchTerm] = useState(searchTerm);
   const [visibleRecipes, setVisibleRecipes] = useState(30);
   const [loading, setLoading] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const recipeId = searchParams.get("recipe");
+
+    if (recipeId) {
+      if (filteredRecipes?.length > 0) {
+        const foundRecipe = filteredRecipes.find(
+          (recipe) => recipe._id === recipeId
+        );
+        if (foundRecipe) {
+          setSelectedRecipe(foundRecipe);
+        } else {
+          setSearchParams({});
+        }
+      }
+    } else {
+      setSelectedRecipe(null);
+    }
+  }, [filteredRecipes, searchParams, setSearchParams]);
+
+  const closeModal = () => {
+    setSearchParams({});
+    setSelectedRecipe(null);
+  };
 
   const handleLoadMore = () => {
     setLoading(true);
@@ -72,6 +101,17 @@ const Browse = ({
         <button className={styles.loadmore} onClick={handleLoadMore}>
           {loading ? "Loading..." : "Load more"}
         </button>
+      )}
+      {selectedRecipe && (
+        <Modal
+          onClose={closeModal}
+          _id={selectedRecipe._id}
+          src={selectedRecipe.imageUrl}
+          title={selectedRecipe.title}
+          description={selectedRecipe.description}
+          category={selectedRecipe.category}
+          author={selectedRecipe.author}
+        />
       )}
     </div>
   );

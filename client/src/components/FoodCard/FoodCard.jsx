@@ -1,7 +1,7 @@
 import styles from "./FoodCard.module.css";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-import Modal from "../Modal/Modal";
+import { useSearchParams } from "react-router-dom";
 import arrow from "../../assets/right-arrow.png";
 import save from "../../assets/save.png";
 import saved from "../../assets/saved.png";
@@ -28,8 +28,8 @@ const FoodCard = ({
     { name: "Quick meal", color: "#0077B6" },
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
@@ -52,6 +52,10 @@ const FoodCard = ({
     if (setSavedRecipes) {
       setSavedRecipes(savedRecipes);
     }
+  };
+
+  const handleOpen = () => {
+    setSearchParams({ recipe: _id });
   };
 
   return (
@@ -87,20 +91,10 @@ const FoodCard = ({
         </div>
         <div className={styles.cardauthor}>By: {author}</div>
       </div>
-      <button className={styles.cardbutton} onClick={() => setIsOpen(true)}>
+      <button className={styles.cardbutton} onClick={handleOpen}>
         More info
         <img src={arrow} alt="Arrow" />
       </button>
-      {isOpen && (
-        <Modal
-          onClose={() => setIsOpen(false)}
-          src={src}
-          title={title}
-          description={description}
-          category={category}
-          author={author}
-        />
-      )}
     </div>
   );
 };

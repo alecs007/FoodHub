@@ -1,8 +1,9 @@
 import styles from "./Hero.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import FoodCard from "../../../components/FoodCard/FoodCard";
+import Modal from "../../../components/Modal/Modal";
 import search from "../../../assets/search.png";
 
 const Hero = ({
@@ -12,6 +13,29 @@ const Hero = ({
   setCategoryTerm,
 }) => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
+  useEffect(() => {
+    const recipeId = searchParams.get("recipe");
+    if (recipeId && randomRecipes?.length > 0) {
+      const foundRecipe = randomRecipes.find(
+        (recipe) => recipe._id === recipeId
+      );
+      if (foundRecipe) {
+        setSelectedRecipe(foundRecipe);
+      } else {
+        setSearchParams({});
+      }
+    } else {
+      setSelectedRecipe(null);
+    }
+  }, [randomRecipes, searchParams, setSearchParams]);
+
+  const closeModal = () => {
+    setSearchParams({});
+    setSelectedRecipe(null);
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -115,6 +139,17 @@ const Hero = ({
           <div className={styles.spinner}></div>
         )}
       </div>
+      {selectedRecipe && (
+        <Modal
+          onClose={closeModal}
+          _id={selectedRecipe._id}
+          src={selectedRecipe.imageUrl}
+          title={selectedRecipe.title}
+          description={selectedRecipe.description}
+          category={selectedRecipe.category}
+          author={selectedRecipe.author}
+        />
+      )}
     </section>
   );
 };

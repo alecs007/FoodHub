@@ -1,8 +1,9 @@
 import styles from "./Modal.module.css";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
+import share from "../../assets/share.png";
 
-const Modal = ({ onClose, src, title, description, category, author }) => {
+const Modal = ({ onClose, _id, src, title, description, category, author }) => {
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -15,9 +16,36 @@ const Modal = ({ onClose, src, title, description, category, author }) => {
     { name: "Kids' favourites", color: "#FFA500" },
     { name: "Quick meal", color: "#0077B6" },
   ];
+
+  const shareURL = `${window.location.origin}/browse?recipe=${_id}`;
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title,
+          text: "I found this amazing recipe on FoodHub!",
+          url: shareURL,
+        });
+      } catch (error) {
+        console.error("Error sharing", error);
+      }
+    } else {
+      alert(
+        "Sharing is not supported on this device. Please copy the link manually."
+      );
+    }
+  };
+
   return ReactDOM.createPortal(
     <div className={styles.modal}>
       <div className={styles.modalcontent}>
+        <img
+          className={styles.share}
+          src={share}
+          alt="share"
+          onClick={handleShare}
+        />
         <img
           className={styles.modalimage}
           src={`http://localhost:8080${src}`}
