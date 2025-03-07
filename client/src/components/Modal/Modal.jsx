@@ -19,11 +19,13 @@ const Modal = ({ onClose, _id, src, title, description, category, author }) => {
 
   const shareURL = `${window.location.origin}/browse?recipe=${_id}`;
 
+  const shareTitle = `${title} - FoodHub`;
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title,
+          title: shareTitle,
           text: "I found this amazing recipe on FoodHub!",
           url: shareURL,
         });
