@@ -25,7 +25,8 @@
    
    • **Save Favorites:** Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
 
-![foodhub3_ss](https://github.com/user-attachments/assets/0c7c96cd-29f7-403f-be47-5eb541759715)
+![image](https://github.com/user-attachments/assets/c956b9a5-94fd-47b2-87a3-db2dec705a73)
+
 
  
 ## 🔹 Admin Authentication & Management
