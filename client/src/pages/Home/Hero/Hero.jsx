@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import Modal from "../../../components/Modal/Modal";
 import search from "../../../assets/search.png";
+import best_chefs from "../../../assets/best_chefs.webp";
 
 const Hero = ({
   randomRecipes,
@@ -60,6 +61,9 @@ const Hero = ({
       <div className={styles.title}>
         DISCOVER<span>.</span>COOK<span>.</span>ENJOY<span>!</span>
       </div>
+      <div className={styles.subtitle}>
+        <img src={best_chefs} alt="With the best chefs image" />
+      </div>
       <div className={styles.inputcontainer}>
         <input
           className={styles.search}
@@ -80,9 +84,11 @@ const Hero = ({
         </div>
       </div>
       <div className={styles.description}>
-        <span className={styles.name}>FoodHub</span> provides endless cooking
-        recipes for you to take your culinary skills to next level! Go ahead and
-        look for your favorite recipes:
+        <span className={styles.name}>
+          Food<span style={{ color: "var(--color-2)" }}>Hub </span>
+        </span>
+        provides endless cooking recipes for you to take your culinary skills to
+        next level! Go ahead and look for your favorite recipes:
       </div>
       <Link to="/browse">
         <button
@@ -112,20 +118,10 @@ const Hero = ({
       <div className={styles.slider}>
         {randomRecipes ? (
           <div className={styles.cards}>
-            {randomRecipes?.map((recipe) => (
+            {[...randomRecipes, ...randomRecipes].map((recipe, index) => (
               <FoodCard
-                key={recipe._id}
+                key={`${recipe._id}-${index}`}
                 _id={recipe._id}
-                src={recipe.imageUrl}
-                title={recipe.title}
-                description={recipe.description}
-                category={recipe.category}
-                author={recipe.author}
-              />
-            ))}
-            {randomRecipes?.map((recipe) => (
-              <FoodCard
-                key={recipe._id}
                 src={recipe.imageUrl}
                 title={recipe.title}
                 description={recipe.description}

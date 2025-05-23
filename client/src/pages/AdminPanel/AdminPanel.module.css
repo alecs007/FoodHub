@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #052842ad;
   color: #fff;
   overflow: hidden;
 }
@@ -31,10 +30,13 @@
   flex-direction: column;
   align-items: center;
   gap: 7px;
+  background-color: #f9f9f9;
+  padding: 10px 0 0 0;
+  border-radius: 5px;
   .adminbutton {
     cursor: pointer;
     color: #fff;
-    padding: 10px 15px;
+    padding: 5px 10px;
     width: 90px;
     border-radius: 5px;
     border: none;
@@ -44,7 +46,7 @@
   }
 }
 .categorybutton.active {
-  border: 1px solid #fff;
+  border: 1px solid var(--color-1);
 }
 .buttoncontainer {
   display: flex;
@@ -55,12 +57,12 @@
 }
 .categorybutton {
   cursor: pointer;
-  color: #fff;
-  background-color: rgb(142, 151, 195);
+  background-color: white;
+  border: none;
+  color: var(--color-1);
   padding: 7px 10px;
   width: 150px;
   border-radius: 5px;
-  border: none;
   font-size: 15px;
   font-weight: 600;
 }

@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 
 const AdminModal = ({ onClose, verifyAdmin }) => {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -13,7 +15,7 @@ const AdminModal = ({ onClose, verifyAdmin }) => {
     setError("");
     try {
       await axios.post(
-        "http://localhost:8080/api/admin/login",
+        `${API_URL}/api/admin/login`,
         { password },
         { withCredentials: true }
       );
@@ -25,7 +27,7 @@ const AdminModal = ({ onClose, verifyAdmin }) => {
   };
   return ReactDOM.createPortal(
     <div className={styles.modal}>
-      <h2>Enter Admin Password</h2>
+      <h2>Welcome back!</h2>
       <input
         type="password"
         value={password}

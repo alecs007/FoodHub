@@ -11,6 +11,8 @@ const EditModal = ({
   fetchRecipes,
   fetchPendingRecipes,
 }) => {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
     { name: "Lunch", color: "#E63946" },
@@ -73,7 +75,7 @@ const EditModal = ({
         formData.append("image", editedImage);
       }
 
-      const res = await axios.put(`http://localhost:8080/api/${id}`, formData, {
+      const res = await axios.put(`${API_URL}/api/${id}`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -118,11 +120,7 @@ const EditModal = ({
         </div>
         <div className={styles.editmodalimg}>
           <img
-            src={
-              previewImage
-                ? previewImage
-                : `http://localhost:8080${recipe.imageUrl}`
-            }
+            src={previewImage ? previewImage : recipe.imageUrl}
             alt="Image"
           />
           <input

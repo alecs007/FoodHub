@@ -13,6 +13,8 @@ const Favorites = lazy(() => import("./pages/Favorites/Favorites"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const [recipes, setRecipes] = useState([]);
   const [randomRecipes, setRandomRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,7 +31,7 @@ function App() {
   };
   const fetchRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/approved");
+      const res = await axios.get(`${API_URL}/api/approved`);
 
       const shuffledRecipes = res.data
         .map((recipe) => ({ recipe, sort: Math.random() }))

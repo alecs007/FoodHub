@@ -66,11 +66,7 @@ const FoodCard = ({
         className={`${styles.save} ${isSaved && styles.saved}`}
         onClick={handleSave}
       />
-      <img
-        className={styles.cardimage}
-        src={`http://localhost:8080${src}`}
-        alt={title}
-      />
+      <img className={styles.cardimage} src={src} alt={title} />
       <h1 className={styles.cardtitle}>{title}</h1>
       <p className={styles.carddescription}>
         {description.split("\n").map((line, index) => (

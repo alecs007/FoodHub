@@ -4,8 +4,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
@@ -13,11 +13,15 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: [
+    "http://localhost:5173",
+    "http://foodhub-production-production.up.railway.app",
+    "https://foodhub7.netlify.app",
+  ],
   credentials: true,
 };
-const PORT = 8080;
-const MONGO_URI = "mongodb://127.0.0.1:27017/foodhub";
+const PORT = process.env.PORT || 8080;
+const MONGO_URI = process.env.MONGO_URL;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 app.use(cors(corsOptions));
@@ -28,38 +32,26 @@ app.use("/uploads", express.static("uploads"));
 app.use(helmet());
 app.use(morgan("dev"));
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    if (!fs.existsSync("uploads")) {
-      fs.mkdirSync("uploads");
-    }
-    cb(null, "uploads");
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "foodhub-images",
+    allowed_formats: ["jpeg", "png", "jpg", "webp", "avif"],
   },
 });
 
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1000000 },
-  fileFilter: (req, file, cb) => {
-    const allowedMimeTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/jpg",
-      "image/webp",
-      "image/avif",
-    ];
-    if (allowedMimeTypes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      return cb(
-        new Error("Only JPEG, PNG, JPG, WEBP and AVIF images are allowed")
-      );
-    }
-  },
-});
+const upload = multer({ storage });
+
+const deleteFromCloudinary = async (imageUrl) => {
+  const publicId = imageUrl.split("/").slice(-2).join("/").split(".")[0];
+  await cloudinary.uploader.destroy(publicId);
+};
 
 mongoose
   .connect(MONGO_URI)
@@ -120,8 +112,8 @@ app.post("/api/admin/login", (req, res) => {
 
   res.cookie("adminToken", token, {
     httpOnly: true,
-    sameSite: "Strict",
-    secure: true,
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+    secure: process.env.NODE_ENV === "production",
   });
   res.status(200).json({ message: "✅ Admin logged in successfully" });
 });
@@ -129,8 +121,8 @@ app.post("/api/admin/login", (req, res) => {
 app.post("/api/admin/logout", (req, res) => {
   res.clearCookie("adminToken", {
     httpOnly: true,
-    sameSite: "Strict",
-    secure: true,
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+    secure: process.env.NODE_ENV === "production",
   });
   res.status(200).json({ message: "✅ Admin logged out successfully" });
 });
@@ -145,7 +137,22 @@ app.get("/api/approved", async (req, res) => {
   }
 });
 
-app.get("/api/pending", async (req, res) => {
+app.get("/api/recipe/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findOne({ _id: id, status: "approved" });
+
+    if (!post) {
+      return res.status(404).json({ error: "❌ Post not found" });
+    }
+    res.status(200).json(post);
+  } catch (err) {
+    console.log("Failed to fetch post", err);
+    res.status(500).json({ error: "❌ Internal server error" });
+  }
+});
+
+app.get("/api/pending", verifyAdmin, async (req, res) => {
   try {
     const pendingPosts = await Post.find({ status: "pending" });
     res.status(200).json(pendingPosts);
@@ -165,7 +172,7 @@ app.post("/api", upload.single("image"), async (req, res) => {
     const newPost = new Post({
       title,
       description,
-      imageUrl: `/uploads/${req.file.filename}`,
+      imageUrl: req.file.path,
       category,
       author,
       status: "pending",
@@ -186,14 +193,7 @@ app.delete("/api/:id", verifyAdmin, async (req, res) => {
       return res.status(404).json({ error: "Post not found" });
     }
 
-    const imagePath = path.join(
-      __dirname,
-      "uploads",
-      path.basename(deletedPost.imageUrl)
-    );
-    if (fs.existsSync(imagePath)) {
-      fs.unlinkSync(imagePath);
-    }
+    await deleteFromCloudinary(deletedPost.imageUrl);
 
     res
       .status(200)
@@ -226,16 +226,11 @@ app.put("/api/:id", verifyAdmin, upload.single("image"), async (req, res) => {
     if (category) updatedData.category = category;
     if (author) updatedData.author = author;
 
-    if (req.file && existingPost.imageUrl) {
-      const oldImagePath = path.join(
-        __dirname,
-        "uploads",
-        path.basename(existingPost.imageUrl)
-      );
-      if (fs.existsSync(oldImagePath)) {
-        fs.unlinkSync(oldImagePath);
+    if (req.file) {
+      if (existingPost.imageUrl) {
+        await deleteFromCloudinary(existingPost.imageUrl);
       }
-      updatedData.imageUrl = `/uploads/${req.file.filename}`;
+      updatedData.imageUrl = req.file.path;
     }
 
     const updatedPost = await Post.findByIdAndUpdate(id, updatedData, {

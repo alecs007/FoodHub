@@ -2,8 +2,7 @@
 
 **FoodHub** is a modern recipe-sharing platform built with the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to explore a diverse range of recipes from various cuisines and also post their best meals, making it an engaging hub for food enthusiasts. The website is designed to be user-friendly, visually appealing, and feature-rich, ensuring a smooth experience for both home cooks and professional chefs.
 
-![foodhub1_ss](https://github.com/user-attachments/assets/decaff87-909c-4b21-9434-cec935b52f0c)
-
+![foodhub7_ss](https://github.com/user-attachments/assets/206abf4e-4b23-44b2-b27b-19422c716e27)
 
 ## 🔹 Recipe Submission & Approval System
    • **Users Can Submit Recipes:** Visitors can share their own recipes by submitting details like images, category, and instructions.
@@ -12,8 +11,7 @@
    
    • **Admin Moderation:** Only the admin has the ability to approve, edit, or delete recipes through an intuitive admin panel.
 
-![foodhub2_ss](https://github.com/user-attachments/assets/50e9005c-e751-444f-b5de-f3c777e9fc41)
-
+![foodhub8_ss](https://github.com/user-attachments/assets/5618ad08-7230-4d7f-9476-9536fbbbaf1a)
 
 ## 🔹 Recipe Discovery & Search
    • **Quick Search by Name:** A simple search function helps users find specific recipes instantly.
@@ -24,25 +22,21 @@
    
    • **Save Favorites:** Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
 
-   • **Easy Sharing:** Users can share recipes with others via a share button, which opens the page directly to that specific recipe.
-   
-![image](https://github.com/user-attachments/assets/99075193-bdeb-48f3-b58b-0f60dedc0aa1)
-
+![foodhub9_ss](https://github.com/user-attachments/assets/3d88f194-24b8-46c4-a72b-be88e9458bbf)
  
 ## 🔹 Admin Authentication & Management
    • **Secure JWT Authentication:** Only the admin can log in and manage the platform.
    
    • **Admin Dashboard:** A private panel where the admin can approve, edit, or remove user-submitted recipes.
 
-![foodhub4_ss](https://github.com/user-attachments/assets/b9d35a89-f31c-45b3-b657-fee3c6c042dc)
-
+![foodhub10_ss](https://github.com/user-attachments/assets/3a20949f-19fe-45a2-83df-a65d98abdc6c)
    
 ## 🔹 Responsive & Optimized Design
    • **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
 
    • **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
 
-![foodhub_presentation3](https://github.com/user-attachments/assets/63ab43dc-0abd-4501-88f1-211ad2a3f7ff)
+![foodhub_presentation](https://github.com/user-attachments/assets/c7af64c0-6ffd-4143-8eaa-1dbe6b6ee022)
 
 ## Technology Stack
 
@@ -57,15 +51,14 @@
    • **Hosting:** Deployed using Netlify for frontend and Railway for backend.
 
 ## 📌 Notes
-• A local version of the project is available in the repository, using a local MongoDB database instead of a hosted one.
+• A local version of the project is available in the repository, you can use a local MongoDB database instead of a hosted one.
 
-• In this version, uploaded images are stored on the server using Multer disk storage instead of cloud storage.
+• In this version, you can store the images on the server using Multer disk storage instead of cloud storage.
 
-• This local version does not include a deployment platform and is meant for offline/local use only.
 
 ## Why FoodHub?
 
-**FoodHub** helps you discover high-quality recipes with a clean, user-friendly design. Whether you're a beginner or expert, find easy-to-follow recipes, save your favorites, share them with others, and enjoy a seamless experience from browsing to cooking.
+**FoodHub** is designed to provide a simple yet powerful way to discover and manage high-quality recipes. By focusing on curated content and an intuitive experience, it ensures that users can easily find and enjoy the best recipes without clutter.
 
 
 

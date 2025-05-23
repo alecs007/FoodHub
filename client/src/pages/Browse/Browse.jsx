@@ -53,6 +53,7 @@ const Browse = ({
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0 }, { behavior: "smooth" });
     const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
     setSavedRecipes(savedRecipes);
   }, []);
@@ -82,7 +83,10 @@ const Browse = ({
 
       <div className={styles.recipecontainer}>
         {filteredRecipes.length === 0 && (
-          <h1 className={styles.norecipes}>No recipes found</h1>
+          <h1 className={styles.norecipes}>
+            No recipes found for{" "}
+            <span style={{ color: "var(--color-2)" }}>"{searchTerm}"</span>
+          </h1>
         )}
         {filteredRecipes.slice(0, visibleRecipes).map((recipe) => (
           <FoodCard

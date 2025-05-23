@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const AdminPanel = () => {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const [isOpen, setIsOpen] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showPending, setShowPending] = useState(false);
@@ -15,7 +17,7 @@ const AdminPanel = () => {
 
   const verifyAdmin = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/admin-check", {
+      const res = await axios.get(`${API_URL}/api/admin-check`, {
         withCredentials: true,
       });
       setIsAdmin(res.data.isAdmin);
@@ -31,7 +33,7 @@ const AdminPanel = () => {
 
   const fetchRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/approved");
+      const res = await axios.get(`${API_URL}/api/approved`);
       setRecipes(res.data.reverse());
     } catch (err) {
       console.log("Failed to fetch data", err);
@@ -39,7 +41,9 @@ const AdminPanel = () => {
   };
   const fetchPendingRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/pending");
+      const res = await axios.get(`${API_URL}/api/pending`, {
+        withCredentials: true,
+      });
       setPendingRecipes(res.data);
     } catch (err) {
       console.log("Failed to fetch data", err);
@@ -47,7 +51,7 @@ const AdminPanel = () => {
   };
   const deleteRecipe = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/${id}`, {
+      await axios.delete(`${API_URL}/api/${id}`, {
         withCredentials: true,
       });
       setRecipes(recipes.filter((recipe) => recipe._id !== id));
@@ -59,13 +63,17 @@ const AdminPanel = () => {
 
   const approveRecipe = async (id) => {
     try {
-      await axios.patch(`http://localhost:8080/api/${id}/approve`, {
-        withCredentials: true,
-      });
+      await axios.patch(
+        `${API_URL}/api/${id}/approve`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       setPendingRecipes(pendingRecipes.filter((recipe) => recipe._id !== id));
       alert("Post approved!");
     } catch (err) {
-      console.log("Failed to delete data", err);
+      console.log("Failed to approve post", err);
       alert("❌ Failed to approve post");
     }
   };
@@ -78,7 +86,7 @@ const AdminPanel = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:8080/api/admin/logout",
+        `${API_URL}/api/admin/logout`,
         {},
         { withCredentials: true }
       );

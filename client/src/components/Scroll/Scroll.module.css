@@ -5,17 +5,16 @@
   margin: 10px;
   cursor: pointer;
   z-index: 100;
-  background-color: var(--color-1);
-  border-radius: 20%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  height: 70px;
-  width: 70px;
+  border-radius: 5px;
+  height: 55px;
+  width: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
   img {
     height: 55%;
     width: 60%;
-    filter: invert(1);
+    filter: invert(9%) sepia(71%) saturate(850%) hue-rotate(166deg)
+      brightness(90%) contrast(105%);
   }
 }

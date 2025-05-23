@@ -1,4 +1,5 @@
 import styles from "./Modal.module.css";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import share from "../../assets/share.png";
@@ -16,16 +17,23 @@ const Modal = ({ onClose, _id, src, title, description, category, author }) => {
     { name: "Kids' favourites", color: "#FFA500" },
     { name: "Quick meal", color: "#0077B6" },
   ];
-
   const shareURL = `${window.location.origin}/browse?recipe=${_id}`;
 
-  const shareTitle = `${title} - FoodHub`;
+  const originalTitle = document.title;
+
+  useEffect(() => {
+    document.title = `${title} - FoodHub`;
+
+    return () => {
+      document.title = originalTitle;
+    };
+  }, [title, originalTitle]);
 
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: shareTitle,
+          title,
           text: "I found this amazing recipe on FoodHub!",
           url: shareURL,
         });
@@ -41,20 +49,16 @@ const Modal = ({ onClose, _id, src, title, description, category, author }) => {
 
   return ReactDOM.createPortal(
     <div className={styles.modal}>
-      <div className={styles.modalcontent}>
-        <img
-          className={styles.share}
-          src={share}
-          alt="share"
-          onClick={handleShare}
-        />
-        <img
-          className={styles.modalimage}
-          src={`http://localhost:8080${src}`}
-          alt={title}
-        />
-        <h1 className={styles.modaltitle}>{title}</h1>
-        <p className={styles.modaldescription}>
+      <div className={styles.modalp1}>
+        <img src={src} alt={title} className={styles.modalimg} />
+        <h1>{title}</h1>
+        <div className={styles.modalinfo}>
+          <div className={styles.modalcategory}>{category}</div>
+          <div className={styles.modalauthor}>By {author}</div>
+        </div>
+      </div>
+      <div className={styles.modalp2}>
+        <p>
           {description.split("\n").map((line, index) => (
             <span key={index}>
               {line}
@@ -62,21 +66,12 @@ const Modal = ({ onClose, _id, src, title, description, category, author }) => {
             </span>
           ))}
         </p>
-        <div className={styles.modalinfo}>
-          <div
-            className={styles.modalcategory}
-            style={{
-              backgroundColor: categories.find((c) => c.name === category)
-                .color,
-            }}
-          >
-            {category}
-          </div>
-          <div className={styles.modalauthor}>By: {author}</div>
-          <button className={styles.modalbutton} onClick={onClose}>
-            Close
-          </button>
-        </div>
+      </div>
+      <div className={styles.modalclose} onClick={onClose}>
+        &#x2715;
+      </div>
+      <div className={styles.modalshare} onClick={handleShare}>
+        <img src={share} alt="share" />
       </div>
     </div>,
     document.body

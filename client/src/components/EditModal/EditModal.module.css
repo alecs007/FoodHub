@@ -19,7 +19,7 @@
   padding: 15px;
   height: fit-content;
   background-color: var(--color-1);
-  border-radius: 20px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -34,7 +34,7 @@
     width: 100%;
     font-size: 17px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     outline: none;
   }
@@ -50,7 +50,7 @@
     height: 90%;
     font-size: 18px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     outline: none;
   }
@@ -68,7 +68,6 @@
   }
   .filelabel {
     cursor: pointer;
-    background: #7a7a7a80;
     padding: 7px 10px;
     font-size: 15px;
     font-weight: 600;
@@ -109,7 +108,7 @@
     width: 200px;
     font-size: 17px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     outline: none;
   }
@@ -123,8 +122,8 @@
   gap: 10px;
   button {
     width: 80px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    border: none;
     padding: 4px 9px;
     color: #fff;
     font-size: 1rem;

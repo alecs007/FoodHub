@@ -4,6 +4,8 @@ import axios from "axios";
 import no_image from "../../../assets/no_image.jpg";
 
 const Post = () => {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState(null);
@@ -11,7 +13,7 @@ const Post = () => {
   const [author, setAuthor] = useState("");
   const [previewImage, setPreviewImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const categories = [
     { name: "Breakfast", color: "#FFC300" },
@@ -34,46 +36,45 @@ const Post = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "No photo chosen");
-    console.log(file);
     setImageFile(file);
     setPreviewImage(URL.createObjectURL(file));
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       if (title.length > 30) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Food name should be less than 25 characters");
         return;
       }
       if (author.length > 25) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Author name should be less than 25 characters");
         return;
       }
       if (title.length <= 0) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Food name is required");
         return;
       }
       if (description.length <= 0) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Food description is required");
         return;
       }
       if (!imageFile) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Food image is required");
         return;
       }
       if (imageFile.size > 5 * 1024 * 1024) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Image size should be less than 1MB");
         return;
       }
       if (category.length <= 0) {
-        setLoading(false);
+        setIsLoading(false);
         setErrorMessage("Food category is required");
         return;
       }
@@ -89,7 +90,7 @@ const Post = () => {
       formData.append("category", category);
       formData.append("author", author || "Anonymous");
 
-      await axios.post("http://localhost:8080/api", formData, {
+      await axios.post(`${API_URL}/api`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -106,7 +107,7 @@ const Post = () => {
       alert(
         "✅ Your recipe has been submitted successfully! It will be reviewed by an admin before being published."
       );
-      setLoading(false);
+      setIsLoading(false);
     } catch (err) {
       console.log(
         " There was an error submitting your recipe. Please try again.",
@@ -115,7 +116,7 @@ const Post = () => {
       setErrorMessage(
         "❌ There was an error submitting your recipe. Please try again."
       );
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -236,7 +237,7 @@ const Post = () => {
             <button
               className={styles.button}
               onClick={() => handleSubmit()}
-              disabled={loading}
+              disabled={isLoading}
             >
               POST !
             </button>

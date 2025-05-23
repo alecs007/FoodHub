@@ -4,60 +4,55 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  min-height: 100vh;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 3vw;
   z-index: 2000;
   overflow: hidden;
+  color: var(--color-1);
 }
-.modalcontent {
-  max-width: 90vw;
-  max-height: 80vh;
-  width: 500px;
-  height: fit-content;
-  background-color: var(--color-1);
-  border-radius: 15px;
+.modalp1 {
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  .modalimg {
+    width: 40vw;
+    aspect-ratio: 16/9;
+    border-radius: 5px 5px 0 0;
+  }
+  h1 {
+    width: 100%;
+    padding: 20px;
+    background: #f9f9f9;
+    font-size: 1.7em;
+    font-weight: 900;
+    font-family: sans-serif;
+    text-align: center;
+  }
 }
-.modalimage {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  max-height: 32vh;
-}
-.modaltitle {
-  margin: 20px 15px;
-  color: white;
-  font-size: 37px;
-  font-weight: 900;
-  text-align: center;
+.modalp2 {
+  height: 80vh;
+  overflow: auto;
+  max-width: 40vw;
   font-family: sans-serif;
-}
-.modaldescription {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.05rem;
   font-weight: 600;
-  text-align: center;
-  font-family: sans-serif;
-  height: 270px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0 20px;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+  font-size: 1em;
+  line-height: 1.5;
+  padding: 5px;
 }
 .modalinfo {
-  height: 70px;
+  background: #f9f9f9;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  justify-content: space-between;
+  padding: 15px 10px;
+  border-radius: 0 0 5px 5px;
 }
 .modalcategory {
   height: 30px;
@@ -72,33 +67,41 @@
   font-family: sans-serif;
 }
 .modalauthor {
-  color: #c3c6cea4;
   font-size: 17px;
   font-family: sans-serif;
 }
-.modalbutton {
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 7px 15px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  font-family: sans-serif;
-}
-.share {
+.modalclose {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  color: #fff;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
   cursor: pointer;
-  width: 25px;
-  filter: invert(1);
 }
-
-@media screen and (max-width: 600px) {
-  .modalauthor {
-    display: none;
+.modalshare {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 30px;
+  cursor: pointer;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .modal {
+    gap: 20px;
+    flex-direction: column;
+  }
+  .modalp1 {
+    margin-top: 50px;
+    .modalimg {
+      width: 90vw;
+    }
+  }
+  .modalp2 {
+    max-width: 90vw;
+    max-height: fit-content;
+    margin-bottom: 30px;
   }
 }

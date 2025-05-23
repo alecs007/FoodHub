@@ -3,9 +3,10 @@
   right: -300px;
   width: 298px;
   height: 100%;
-  margin-top: 70px;
-  background-color: var(--color-1);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  margin-top: 65px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
   border-right: none;
   transition: right 0.3s ease;
   font-size: 100px;
@@ -31,18 +32,23 @@
   width: 100%;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-1);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px 12px;
   cursor: pointer;
   h2 {
+    color: var(--color-1);
     font-size: 20px;
   }
-  img {
+  .image {
     width: 20px;
-    filter: brightness(0) invert(1);
+    filter: invert(9%) sepia(71%) saturate(850%) hue-rotate(166deg)
+      brightness(90%) contrast(105%);
+  }
+  .imagestar {
+    width: 20px;
   }
 }
 .menu.open {
@@ -56,7 +62,7 @@
 .submenu {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-1);
   border-top: none;
   padding: 6px;
   display: flex;

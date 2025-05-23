@@ -6,11 +6,11 @@
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
-  background: rgba(5, 40, 66, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   position: relative;
   z-index: 1;
 }
-.home::before {
+/* .home::before {
   content: "";
   position: absolute;
   top: 0;
@@ -24,4 +24,4 @@
   background-position: center;
   filter: blur(10px) brightness(0.9) saturate(2.5);
   z-index: -1;
-}
+} */

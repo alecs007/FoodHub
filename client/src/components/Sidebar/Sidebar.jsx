@@ -115,8 +115,12 @@ const Sidebar = ({
             className={`${styles.menu} ${toggleMenu ? styles.open : ""}`}
             onClick={() => setToggleMenu((prev) => !prev)}
           >
-            <h2>Category</h2>
-            <img src={toggleMenu ? arrow_down : arrow_right} alt="arrow" />
+            <h2>Categories</h2>
+            <img
+              src={toggleMenu ? arrow_down : arrow_right}
+              alt="arrow"
+              className={styles.image}
+            />
           </div>
           {toggleMenu && (
             <div className={styles.submenu}>
@@ -135,19 +139,19 @@ const Sidebar = ({
         </div>
         <div className={styles.menu} onClick={handleFavoritesClick}>
           <h2>Favorites</h2>
-          <img src={saved} alt="save" />
+          <img src={saved} alt="save" className={styles.imagestar} />
         </div>
         <div className={styles.menu} onClick={handleHomeClick}>
           <h2>Home</h2>
-          <img src={right_arrow} alt="arrow" />
+          <img src={right_arrow} alt="arrow" className={styles.image} />
         </div>
         <div className={styles.menu} onClick={handlePostClick}>
           <h2>Post recipe</h2>
-          <img src={right_arrow} alt="arrow" />
+          <img src={right_arrow} alt="arrow" className={styles.image} />
         </div>
         <div className={styles.menu} onClick={handleExploreClick}>
           <h2>Explore</h2>
-          <img src={explore} alt="explore" />
+          <img src={explore} alt="explore" className={styles.imagestar} />
         </div>
       </div>
     </div>

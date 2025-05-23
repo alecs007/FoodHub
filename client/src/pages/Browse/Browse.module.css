@@ -3,7 +3,6 @@
   height: fit-content;
   min-height: 100vh;
   padding-top: 70px;
-  background: #052842b7;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -19,7 +18,7 @@
 .norecipes {
   font-size: 2em;
   font-weight: 600;
-  color: #ffffffad;
+  color: var(--color-1);
   text-align: center;
   margin-top: 30px;
 }
@@ -36,20 +35,20 @@
   border: none;
   border-bottom: 1px solid var(--color-2);
   border-radius: 0px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+  background: #f9f9f9;
+  color: var(--color-1);
   font-size: 1.2rem;
   text-align: center;
   padding: 10px 0px 10px 43px;
   outline: none;
   &::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-1);
   }
 }
 .searchicon {
-  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
   border-bottom: 1px solid var(--color-2);
+  background: #f9f9f9;
   height: 100%;
   width: 43px;
   display: flex;
@@ -57,7 +56,8 @@
   justify-content: center;
   img {
     width: 21px;
-    filter: invert(1);
+    filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(165deg)
+      brightness(0.7) contrast(1.5);
     opacity: 0.8;
   }
 }
@@ -67,7 +67,7 @@
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-2);
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: white;
   font-size: 1rem;
@@ -79,4 +79,5 @@
 }
 .loadmore:hover {
   background: rgba(255, 255, 255, 0.2);
+  color: var(--color-2);
 }
