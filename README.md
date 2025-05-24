@@ -60,7 +60,7 @@
 
 ## Why FoodHub?
 
-**FoodHub** is designed to provide a simple yet powerful way to discover and manage high-quality recipes. By focusing on curated content and an intuitive experience, it ensures that users can easily find and enjoy the best recipes without clutter.
+**FoodHub** is designed to provide a **simple** yet **powerful** way to discover and manage high-quality recipes. By focusing on curated content and an intuitive experience, it ensures that users can easily find and enjoy the best recipes without clutter.
 
 
 
