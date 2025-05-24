@@ -44,11 +44,13 @@
 
    • **Backend:** Node.js with Express.js for handling API requests.
 
-   • **Database:** MongoDB with Mongoose for efficient data storage.
+   • **Database:** MongoDB with Cloudinary for efficient data storage.
 
    • **Authentication:** JWT-based authentication for secure login.
 
    • **Hosting:** Deployed using Netlify for frontend and Railway for backend.
+
+![foodhub_draw](https://github.com/user-attachments/assets/0d01a1ec-78ee-48e5-9f87-371fd3607ef1)
 
 ## 📌 Notes
 • A local version of the project is available in the repository, you can use a local MongoDB database instead of a hosted one.

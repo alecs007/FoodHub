@@ -152,7 +152,7 @@ app.get("/api/recipe/:id", async (req, res) => {
   }
 });
 
-app.get("/api/pending", verifyAdmin, async (req, res) => {
+app.get("/api/pending", async (req, res) => {
   try {
     const pendingPosts = await Post.find({ status: "pending" });
     res.status(200).json(pendingPosts);

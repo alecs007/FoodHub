@@ -53,7 +53,15 @@ const Modal = ({ onClose, _id, src, title, description, category, author }) => {
         <img src={src} alt={title} className={styles.modalimg} />
         <h1>{title}</h1>
         <div className={styles.modalinfo}>
-          <div className={styles.modalcategory}>{category}</div>
+          <div
+            className={styles.modalcategory}
+            style={{
+              backgroundColor: categories.find((c) => c.name === category)
+                .color,
+            }}
+          >
+            {category}
+          </div>
           <div className={styles.modalauthor}>By {author}</div>
         </div>
       </div>

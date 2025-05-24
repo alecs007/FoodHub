@@ -73,7 +73,7 @@
 }
 .carddescription {
   margin: 0 0.7rem;
-  max-height: 120px;
+  height: 120px;
   overflow: hidden;
   color: var(--color-1);
   font-size: 16px;
