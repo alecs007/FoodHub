@@ -18,25 +18,48 @@
     width: 250px;
     border-radius: 5px;
     border: 1px solid var(--color-1);
-    padding: 5px;
+    padding: 7px;
+    font-size: 16px;
   }
   h2 {
-    font-size: 25px;
+    font-family: sans-serif;
+    font-size: 28px;
     font-weight: 600;
   }
   button {
+    width: 100%;
     outline: none;
     border: none;
-    padding: 5px 15px;
+    padding: 7px 15px;
     font-weight: 600;
     font-family: sans-serif;
-    font-size: 1em;
-    color: rgba(0, 0, 0, 0.85);
+    font-size: 18px;
+    color: white;
+    background-color: var(--color-1);
     border-radius: 3px;
     cursor: pointer;
+    transition: background-color 0.2s ease-out;
+  }
+  button:hover {
+    background-color: var(--color-2);
   }
   .error {
     height: 20px;
     color: red;
   }
+  img {
+    width: 100px;
+  }
+}
+.modalcontent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  color: var(--color-1);
+  border: 1px solid #0528425d;
+  border-radius: 5px;
+  background: #f9f9f9;
 }
