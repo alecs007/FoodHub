@@ -239,7 +239,7 @@ const Post = () => {
               onClick={() => handleSubmit()}
               disabled={isLoading}
             >
-              POST !
+              {isLoading ? "Posting..." : "POST !"}
             </button>
             <div className={styles.status}>{errorMessage}</div>
           </div>
