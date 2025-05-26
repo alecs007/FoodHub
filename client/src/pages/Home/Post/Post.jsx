@@ -70,7 +70,7 @@ const Post = () => {
       }
       if (imageFile.size > 5 * 1024 * 1024) {
         setIsLoading(false);
-        setErrorMessage("Image size should be less than 1MB");
+        setErrorMessage("Image size should be less than 5MB");
         return;
       }
       if (category.length <= 0) {
