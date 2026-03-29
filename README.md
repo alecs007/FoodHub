@@ -2,7 +2,9 @@
 
 **FoodHub** is a modern recipe-sharing platform built with the **MERN** (MongoDB, Express.js, React.js, Node.js) stack. It allows users to explore a diverse range of recipes from various cuisines and also post their best meals, making it an engaging hub for food enthusiasts. The website is designed to be **user-friendly, visually appealing, and feature-rich,** ensuring a smooth experience for both home cooks and professional chefs.
 
-![foodhub7_ss](https://github.com/user-attachments/assets/206abf4e-4b23-44b2-b27b-19422c716e27)
+🏆 FoodHub won 2nd place at the National Olympiad of Innovation and Digital Creation, Bihor, recognizing its design, functionality, and real-world applicability.
+
+<img src="https://res.cloudinary.com/dqyq1oiwi/image/upload/v1774786417/foodhub7_ss_ighqou.png" alt="FoodHub 1" width="100%">
 
 ## 🔹 Recipe Submission & Approval System
    • **Users Can Submit Recipes:** Visitors can share their own recipes by submitting details like images, category, and instructions.
@@ -11,7 +13,7 @@
    
    • **Admin Moderation:** Only the admin has the ability to approve, edit, or delete recipes through an intuitive admin panel.
 
-![foodhub8_ss](https://github.com/user-attachments/assets/5618ad08-7230-4d7f-9476-9536fbbbaf1a)
+<img src="https://res.cloudinary.com/dqyq1oiwi/image/upload/v1774786415/foodhub8_ss_sjeztl.png" alt="FoodHub 2" width="100%">
 
 ## 🔹 Recipe Discovery & Search
    • **Quick Search by Name:** A simple search function helps users find specific recipes instantly.
@@ -22,21 +24,21 @@
    
    • **Save Favorites:** Users can mark recipes as favorites, and they will be stored in localStorage for quick access.
 
-![foodhub9_ss](https://github.com/user-attachments/assets/3d88f194-24b8-46c4-a72b-be88e9458bbf)
+<img src="https://res.cloudinary.com/dqyq1oiwi/image/upload/v1774786420/foodhub9_ss_xtx3ln.png" alt="FoodHub 3" width="100%">
  
 ## 🔹 Admin Authentication & Management
    • **Secure JWT Authentication:** Only the admin can log in and manage the platform.
    
    • **Admin Dashboard:** A private panel where the admin can approve, edit, or remove user-submitted recipes.
 
-![foodhub10_ss](https://github.com/user-attachments/assets/3a20949f-19fe-45a2-83df-a65d98abdc6c)
+<img src="https://res.cloudinary.com/dqyq1oiwi/image/upload/v1774786419/foodhub10_ss_d0skzi.png" alt="FoodHub 4" width="100%">
    
 ## 🔹 Responsive & Optimized Design
    • **Mobile-Friendly Interface:** The website is fully responsive, ensuring a seamless experience on all devices.
 
    • **Fast Performance:** Optimized API responses and image handling for a smooth browsing experience.
 
-![foodhub_presentation](https://github.com/user-attachments/assets/c7af64c0-6ffd-4143-8eaa-1dbe6b6ee022)
+<img src="https://res.cloudinary.com/dqyq1oiwi/image/upload/v1774786442/foodhub_presentation_ncjwst.png" alt="FoodHub Presentation" width="100%">
 
 ## Technology Stack
 
@@ -50,7 +52,7 @@
 
    • **Hosting:** Deployed using Netlify for frontend and Railway for backend.
 
-![foodhub_draw](https://github.com/user-attachments/assets/0d01a1ec-78ee-48e5-9f87-371fd3607ef1)
+<img src="https://res.cloudinary.com/dqyq1oiwi/image/upload/v1774786441/foodhub_draw_dtlgry.png" alt="FoodHub Draw" width="100%">
 
 ## 📌 Notes
 • A local version of the project is available in the repository, you can use a local MongoDB database instead of a hosted one.
